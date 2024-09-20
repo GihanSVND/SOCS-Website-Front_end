@@ -1,8 +1,11 @@
+'use client'
 import Image from 'next/image';
+import Navbar from "@/components/navbar";
 
 export default function Home() {
     return (
         <div className="bg-black text-white">
+            <Navbar></Navbar>
             {/* Hero Section */}
             <section>
                 <div className="relative flex items-center justify-center h-screen bg-black">
