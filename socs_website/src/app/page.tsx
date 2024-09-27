@@ -1,6 +1,8 @@
 'use client'
 import Image from 'next/image';
 import Navbar from "@/components/navbar";
+import AnnouncementsCardComponent from "@/components/announcements_card";
+import Committee_member_gallery from "@/components/committee_member_gallery";
 
 export default function Home() {
     return (
@@ -49,22 +51,32 @@ export default function Home() {
 
             {/* Announcements Section */}
             <section className="text-center py-16 bg-black">
-
+                <h2 className="text-4xl font-semibold mb-4 text-white">ANNOUNCEMENT</h2>
+                {/* Container for the card components */}
+                <div className="flex justify-center items-center space-x-8 mt-10">
+                    <AnnouncementsCardComponent/>
+                    <AnnouncementsCardComponent/>
+                    <AnnouncementsCardComponent/>
+                </div>
             </section>
 
             {/* Executive Committee Section */}
             <section className="text-center py-16 bg-black">
-                <h2 className="text-4xl font-semibold mb-12">Executive Committee</h2>
-                <p className="text-lg mb-8">Year 2024 / 2025</p>
-                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-8 px-10">
-                    {/* Executive Members */}
-
-                </div>
+                <h2 className="text-4xl font-semibold mb-4 text-white">Executive Committee</h2>
+                <p className="text-lg mb-12 text-gray-400">Year 2024 / 2025</p>
+                <Committee_member_gallery/>
             </section>
 
-            {/* Collaborations Section */}
-            <section className="text-center py-16 bg-black">
 
+            {/* COLLABORATIONS Section */}
+            <section className="text-center py-16 bg-black">
+                <h2 className="text-4xl font-semibold mb-4 text-white">COLLABORATIONS</h2>
+                <p className="mt-10 mx-auto max-w-5xl p-5">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and scrambled it to make a type specimen book. It has survived not only five centuries, but also the
+                    leap into electronic typesetting, remaining essentially unchanged.
+                </p>
             </section>
         </div>
     );
