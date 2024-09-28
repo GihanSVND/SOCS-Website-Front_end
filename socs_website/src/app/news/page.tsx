@@ -16,6 +16,18 @@ export default function News() {
         { title: 'Shape 5' },
     ];
 
+    const shapeGrid = [
+        { id: 1 },
+        { id: 2 },
+        { id: 3 },
+        { id: 4 },
+        { id: 5 },
+        { id: 6 },
+        { id: 7 },
+        { id: 8 },
+        { id: 9 }
+    ];
+
     // Auto-rotate shapes every 2 seconds
     useEffect(() => {
         const interval = setInterval(() => {
@@ -99,6 +111,22 @@ export default function News() {
                             />
                         ))}
                     </div>
+
+                    {/* Centered Shape Grid with Horizontal Gap */}
+                    <div className="flex justify-center mt-16">
+                        <div className="grid grid-cols-3 gap-3">
+                            {shapeGrid.map((shape) => (
+                                <div 
+                                    key={shape.id}
+                                    className="w-[150px] h-[150px] bg-gradient-to-b from-gray-600 to-gray-800 rounded-md"
+                                    style={{ boxShadow: '0 4px 10px rgba(0, 0, 0, 0.5)' }}
+                                >
+                                    {/* Placeholder for shape content */}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
                 </div>
             </section>
         </div>
