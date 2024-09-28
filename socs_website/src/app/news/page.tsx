@@ -1,5 +1,6 @@
 "use client";
 
+import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import { useState, useEffect } from "react";
 import { FaChevronDown } from "react-icons/fa";
@@ -146,6 +147,7 @@ export default function News() {
 
                 </div>
             </section>
+            <Footer />
         </div>
     );
 }
