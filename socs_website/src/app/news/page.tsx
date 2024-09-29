@@ -33,7 +33,7 @@ export default function News() {
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentIndex((prevIndex) => (prevIndex + 1) % shapes.length);
-        }, 2000);
+        }, 3000);
 
         return () => clearInterval(interval);
     }, [shapes.length]);
@@ -43,7 +43,7 @@ export default function News() {
         const timer = setTimeout(() => {
             setShowImage(false);
             setFadeIn(true); // Start fade-in effect
-        }, 2000);
+        }, 1000);
 
         return () => clearTimeout(timer);
     }, []);
