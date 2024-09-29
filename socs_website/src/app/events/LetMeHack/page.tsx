@@ -44,67 +44,67 @@ export default function Home() {
       </div>
 
 <div>
-      <div className="grid grid-cols-6 grid-rows-2 gap-4 ">
+      <div className="grid grid-cols-6 grid-rows-2 gap-4 px-[200px]">
         <div>
           <div className="col-span-2 col-start-1 row-start-2">
             <div className="col-start-2 row-start-1">
-              <ImageSlider images={images} intervalTime={4000} />
+              <ImageSlider images={images} />
             </div>
           </div>
         </div>
         <div>
           <div className="col-span-2 col-start-1 row-start-2">
             <div className="col-start-2 row-start-1">
-              <ImageSlider images={images} intervalTime={4000} />
+              <ImageSlider images={images} />
             </div>
           </div>
         </div>
         <div className="col-start-1 row-start-2">
           <div className="col-span-2 col-start-1 row-start-2">
             <div className="col-start-2 row-start-1">
-              <ImageSlider images={images} intervalTime={4000} />
+              <ImageSlider images={images} />
             </div>
           </div>
         </div>
         <div className="col-start-2 row-start-2">
           <div className="col-span-2 col-start-1 row-start-2">
             <div className="col-start-2 row-start-1">
-              <ImageSlider images={images} intervalTime={4000} />
+              <ImageSlider images={images} />
             </div>
           </div>
         </div>
         <div className="col-span-2 row-span-2 col-start-3 row-start-1">
           <div className="col-span-2 col-start-1 row-start-2">
             <div className="col-start-2 row-start-1">
-              <ImageSlider images={images} intervalTime={4000} />
+              <ImageSlider images={images} />
             </div>
           </div>
         </div>
         <div className="col-start-5 row-start-1">
           <div className="col-span-2 col-start-1 row-start-2">
             <div className="col-start-2 row-start-1">
-              <ImageSlider images={images} intervalTime={4000} />
+              <ImageSlider images={images} />
             </div>
           </div>
         </div>
         <div className="col-start-6 row-start-1">
           <div className="col-span-2 col-start-1 row-start-2">
             <div className="col-start-2 row-start-1">
-              <ImageSlider images={images} intervalTime={4000} />
+              <ImageSlider images={images} />
             </div>
           </div>
         </div>
         <div className="col-start-5 row-start-2">
           <div className="col-span-2 col-start-1 row-start-2">
             <div className="col-start-2 row-start-1">
-              <ImageSlider images={images} intervalTime={4000} />
+              <ImageSlider images={images} />
             </div>
           </div>
         </div>
         <div className="col-start-6 row-start-2">
           <div className="col-span-2 col-start-1 row-start-2">
             <div className="col-start-2 row-start-1">
-              <ImageSlider images={images} intervalTime={4000} />
+              <ImageSlider images={images} />
             </div>
           </div>
         </div>
