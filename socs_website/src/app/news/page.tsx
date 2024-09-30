@@ -6,148 +6,241 @@ import { useState, useEffect } from "react";
 import { FaChevronDown } from "react-icons/fa";
 
 export default function News() {
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [showImage, setShowImage] = useState(true);
-    const [fadeIn, setFadeIn] = useState(false); // State for fade-in effect
-    const shapes = [
-        { title: 'Shape 1' },
-        { title: 'Shape 2' },
-        { title: 'Shape 3' },
-        { title: 'Shape 4' },
-        { title: 'Shape 5' },
-    ];
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [showImage, setShowImage] = useState(true);
+  const [fadeIn, setFadeIn] = useState(false);
 
-    const shapeGrid = [
-        { id: 1 },
-        { id: 2 },
-        { id: 3 },
-        { id: 4 },
-        { id: 5 },
-        { id: 6 },
-        { id: 7 },
-        { id: 8 },
-        { id: 9 }
-    ];
+  const shapeImages = [
+    "/images/annoncmentcard.png",
+    "/images/news.png",
+    "/images/annoncmentcard.png",
+    "/images/news.png",
+    "/images/annoncmentcard.png",
+  ];
 
-    // Auto-rotate shapes every 2 seconds
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentIndex((prevIndex) => (prevIndex + 1) % shapes.length);
-        }, 3000);
+  const shapeGrid = [
+    { id: 1, text: "1st part" },
+    { id: 2, text: "2nd part" },
+    { id: 3, text: "3rd part" },
+    { id: 4, text: "4th part" },
+    { id: 5, text: "5th part" },
+    { id: 6, text: "6th part" },
+    { id: 7, text: "7th part" },
+    { id: 8, text: "8th part" },
+    { id: 9, text: "9th part" },
+  ];
 
-        return () => clearInterval(interval);
-    }, [shapes.length]);
+  const newsImages = [
+    "/images/news.png",
+    "/images/annoncmentcard.png",
+    "/images/news.png",
+    "/images/annoncmentcard.png",
+    "/images/news.png",
+    "/images/annoncmentcard.png",
+    "/images/news.png",
+    "/images/annoncmentcard.png",
+    "/images/news.png",
+    "/images/annoncmentcard.png",
+  ];
 
-    // Hide the image and trigger fade-in effect after 2 seconds
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setShowImage(false);
-            setFadeIn(true); // Start fade-in effect
-        }, 1000);
+  const shapeTexts = [
+    "This is 1st",
+    "This is 2nd",
+    "This is 3rd",
+    "This is 4th",
+    "This is 5th",
+  ];
 
-        return () => clearTimeout(timer);
-    }, []);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % shapeImages.length);
+    }, 3000);
 
-    return (
-        <div className="bg-black min-h-screen">
-            <Navbar />
-            <section>
-                <div className="text-center">
-                    <h1 className="text-white text-7xl mt-16">News</h1>
+    return () => clearInterval(interval);
+  }, [shapeImages.length]);
 
-                    {/* Conditional Rendering for Image */}
-                    {showImage && (
-                        <div className="flex justify-center mt-2">
-                            <img 
-                                src="/images/news.png" 
-                                alt="News Image" 
-                                className="w-auto h-96"
-                            />
-                            <div className="absolute inset-0 bottom-0 h-3/4 bg-gradient-to-t from-black to-transparent" />
-                        </div>
-                    )}
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowImage(false);
+      setFadeIn(true);
+    }, 1000);
 
-                    {/* Circular Icon Underneath */}
-                    <div className={`flex justify-center mt-4 ${showImage ? 'mt-16' : 'mt-2'} transition-all duration-500 ${fadeIn ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-                        <div 
-                            className="flex items-center justify-center w-5 h-5 border-2 border-white rounded-full cursor-pointer"
-                        >
-                            <FaChevronDown className="text-white text-1xl" />
-                        </div>
-                    </div>
+    return () => clearTimeout(timer);
+  }, []);
 
-                    {/* Shapes Display */}
-                    <div className={`flex justify-center mt-4 ${showImage ? 'mt-8' : 'mt-2'} transition-all duration-500 ${fadeIn ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-                        <div className="w-[800px] h-[350px] flex relative rounded-lg">
-                            {/* Left Part - 65% Width, Darker Background */}
-                            <div 
-                                className="flex-[0.65] flex items-center justify-center rounded-l-lg border-white border-[1px]"
-                                style={{ background: 'rgba(58, 58, 58, 0.6)', borderTopLeftRadius: '24px', borderBottomLeftRadius: '24px' }}
-                            >
-                                <span className="text-white text-xl">{shapes[currentIndex].title}</span>
-                            </div>
+  useEffect(() => {
+    console.log("Current Image:", shapeImages[currentIndex]);
+  }, [currentIndex]);
 
-                            {/* White Divider Line */}
-                            <div className="absolute top-0 bottom-0 left-[65%] w-[0px] bg-white" />  {/* Ensure this is 1px */}
+  return (
+    <div className="bg-black min-h-screen">
+      <Navbar />
+      <section>
+        <div className="text-center">
+          <h1 className="text-white text-7xl mt-16">News</h1>
 
-                            {/* Right Part - 35% Width, Lighter Background */}
-                            <div 
-                                className="flex-[0.35] flex items-center justify-center rounded-r-lg border-white border-[1px]"
-                                style={{ background: 'rgba(58, 58, 58, 0.8)', borderTopRightRadius: '24px', borderBottomRightRadius: '24px' }}
-                            >
-                                <span className="text-black text-xl">Additional Info</span>
-                            </div>
-                        </div>
-                    </div>
+          {showImage && (
+            <div className="flex justify-center mt-2">
+              <img
+                src="/images/news.png"
+                alt="News Image"
+                className="w-auto h-96"
+              />
+              <div className="absolute inset-0 bottom-0 h-3/4 bg-gradient-to-t from-black to-transparent" />
+            </div>
+          )}
 
-                    {/* Dots for Navigation */}
-                    <div className="flex justify-center mt-16">
-                        {shapes.map((_, index) => (
-                            <div
-                                key={index}
-                                className={`mx-1 cursor-pointer ${currentIndex === index ? 'bg-white w-14 h-2' : 'bg-gray-600 w-2 h-2'} rounded-full transition-all duration-300`}
-                                onClick={() => setCurrentIndex(index)}
-                            />
-                        ))}
-                    </div>
+          
 
-                    <div className="flex justify-center mt-16">
-                        <div className="grid grid-cols-3 gap-5">
-                            {shapeGrid.map((shape) => (
-                                <div 
-                                    key={shape.id}
-                                    className="w-[250px] h-[250px] rounded-[17px] overflow-hidden bg-gray-800 relative"
-                                    style={{ boxShadow: '0 4px 10px rgba(0, 0, 0, 0.5)' }}
-                                >
-                                    {/* Top Part with Subtle Light Effect in the Center */}
-                                    <div className="w-full h-2/3 relative rounded-t-[17px]" 
-                                        style={{ backgroundColor: 'rgba(58, 58, 58, 0.6)' }} >
-                                        {/* Light Effect Focused at Top Center */}
-                                        <div 
-                                            className="absolute top-0 left-0 w-full h-full rounded-t-[17px]" 
-                                            style={{
-                                                background: 'radial-gradient(circle at 50% 15%, rgba(255, 255, 255, 0.2), transparent 60%)'
-                                            }}
-                                        ></div>
-                                    </div>
-
-                                    {/* Divider Line */}
-                                    <div className="w-full h-[1px] bg-gray-500" style={{ top: '66%' }}></div>
-
-                                    {/* Bottom Part */}
-                                    <div className="w-full h-1/3 rounded-b-[17px]"
-                                        style={{ backgroundColor: 'rgba(58, 58, 58, 0.6)' }} ></div>
-
-                                    {/* Border around the shape with 1px size */}
-                                    <div className="absolute inset-0 border-gray-500 border-[1px] rounded-[17px]"></div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
+          <div
+            className={`flex justify-center mt-4 ${
+              showImage ? "mt-8" : "mt-2"
+            } transition-all duration-500 ${
+              fadeIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}
+          >
+            <div className="w-[1250px] h-[430px] flex relative rounded-lg">
+              <div
+                className="flex-[0.75] flex items-center justify-center rounded-none relative"
+                style={{
+                  borderTopLeftRadius: "24px",
+                  borderBottomLeftRadius: "24px",
+                  borderWidth: "1px",
+                  borderStyle: "solid",
+                  borderColor: "white",
+                  background: "rgba(58, 58, 58, 0.6)",
+                }}
+              >
+                <div className="w-full h-full relative overflow-hidden rounded-l-[24px]">
+                  <img
+                    src={shapeImages[currentIndex]}
+                    alt={`Shape ${currentIndex + 1}`}
+                    className="w-full h-full object-fill"
+                  />
                 </div>
-            </section>
-            <Footer />
+              </div>
+
+              <div
+                className="flex-[0.25] flex items-center justify-center rounded-r-lg relative"
+                style={{
+                  borderTopRightRadius: "24px",
+                  borderBottomRightRadius: "24px",
+                  borderWidth: "0.5px",
+                  borderStyle: "solid",
+                  borderColor: "white",
+                  background: "rgba(58, 58, 58, 0.8)",
+                }}
+              >
+                
+                <div
+                  className="absolute inset-0 bg-gradient-to-t from-transparent to-black opacity-30 rounded-r-lg"
+                  style={{
+                    borderTopRightRadius: "24px",
+                    borderBottomRightRadius: "24px",
+                  }}
+                ></div>
+
+                {/* Text Layer */}
+                <span className="text-white text-2xl relative z-10">
+                  {shapeTexts[currentIndex]}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex justify-center mt-8">
+            {shapeImages.map((_, index) => (
+              <div
+                key={index}
+                className={`mx-1 cursor-pointer ${
+                  currentIndex === index
+                    ? "bg-white w-14 h-2"
+                    : "bg-gray-600 w-2 h-2"
+                } rounded-full transition-all duration-300`}
+                onClick={() => setCurrentIndex(index)}
+              />
+            ))}
+          </div>
+
+          <div
+            className={`flex justify-center mt-4 ${
+              showImage ? "mt-16" : "mt-2"
+            } transition-all duration-500 ${
+              fadeIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}
+          >
+            <div className="flex items-center justify-center w-5 h-5 border-2 border-white rounded-full cursor-pointer">
+              <FaChevronDown className="text-white text-1xl" />
+            </div>
+          </div>
+
+          <div className="flex justify-center mt-24">
+            <div className="grid grid-cols-3 gap-20">
+              {shapeGrid.map((shape, index) => (
+                <div
+                  key={shape.id}
+                  className="w-[360px] h-[470px] rounded-[17px] overflow-hidden bg-gray-800 relative"
+                  style={{ boxShadow: "0 4px 10px rgba(0, 0, 0, 0.5)" }}
+                >
+                  <div
+                    className="w-full h-2/3 relative rounded-t-[17px]"
+                    style={{ backgroundColor: "rgba(58, 58, 58, 0.6)" }}
+                  >
+                    <img
+                      src={newsImages[index]}
+                      alt={`Shape ${index + 1}`}
+                      className="w-full h-full object-fill rounded-t-[17px]"
+                    />
+                    <div
+                      className="absolute top-0 left-0 w-full h-full rounded-t-[17px]"
+                      style={{
+                        background:
+                          "radial-gradient(circle at 50% 15%, rgba(255, 255, 255, 0.2), transparent 60%)",
+                      }}
+                    ></div>
+                  </div>
+
+                  {/* Divider Line */}
+                  <div
+                    className="w-full h-[1px] bg-gray-500"
+                    style={{
+                      top: "66%",
+                      background:
+                        "linear-gradient(to right, rgba(255, 255, 255, 0.5), rgba(58, 58, 58, 0.6))",
+                    }}
+                  ></div>
+
+                  {/* Bottom Part with Text */}
+                  <div
+                    className="w-full h-1/3 rounded-b-[17px] flex items-center justify-center"
+                    style={{ backgroundColor: "rgba(58, 58, 58, 0.6)" }}
+                  >
+                    <span className="text-white text-lg">{shape.text}</span>
+                  </div>
+
+                  {/* Border with Gradient and Rounded Caps */}
+                  <div
+                    className="absolute inset-0 rounded-[17px] pointer-events-none"
+                    style={{
+                      borderWidth: "1px",
+                      borderStyle: "solid",
+                      borderColor: "transparent",
+                      borderRadius: "17px",
+                      background:
+                        "linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.7)) border-box",
+                      WebkitMask:
+                        "linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)",
+                      WebkitMaskComposite: "xor",
+                      maskComposite: "exclude",
+                    }}
+                  ></div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
-    );
+      </section>
+      <Footer />
+    </div>
+  );
 }
