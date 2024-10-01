@@ -2,19 +2,20 @@
 
 import { useEffect, useState } from "react";
 import Navbar from "@/components/navbar";
-
 import {
   faFacebookSquare,
   faInstagram,
   faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import Footer from "@/components/footer";
 
 
 export default function ContactUs() {
+
   const [fadeOut, setFadeOut] = useState(false);
 
   // Trigger fade-out after 2 seconds
@@ -191,7 +192,8 @@ export default function ContactUs() {
 
         {/* Image Section */}
         <div className="mr-0 relative -mt-10">
-          {/* First Image */}
+
+
           <img
             src="/images/contact us.png"
             alt="Contact Us"
@@ -212,12 +214,18 @@ export default function ContactUs() {
               opacity: fadeOut ? 0 : 1, // Set opacity to 0 after fading out
               display: fadeOut ? "none" : "block", // Hide after animation
             }}
+
+          <div
+            className="absolute top-0 left-0 h-full w-full bg-gradient-to-l from-black via-black to-transparent opacity-100"
+            style={{ clipPath: "inset(0 0% 0 0)" }}
           />
         </div>
       </section>
 
       {/* Social Figures Section */}
+
       <section className="bg-black py-20 mt-32">
+      <section className="bg-black py-20">
         <div className="text-center mb-12">
           <h2 className="text-white text-4xl font-bold">SOCIAL FIGURES</h2>
         </div>
@@ -272,3 +280,8 @@ export default function ContactUs() {
     </div>
   );
 }
+
+    </div>
+  );
+}
+
