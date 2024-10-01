@@ -40,7 +40,6 @@ export default function News() {
     "/images/news.png",
     "/images/annoncmentcard.png",
     "/images/news.png",
-    "/images/annoncmentcard.png",
   ];
 
   const shapeTexts = [
@@ -77,20 +76,18 @@ export default function News() {
       <Navbar />
       <section>
         <div className="text-center">
-          <h1 className="text-white text-7xl mt-16">News</h1>
+          <h1 className="text-white text-4xl md:text-7xl mt-16">News</h1>
 
           {showImage && (
-            <div className="flex justify-center mt-2">
+            <div className="flex justify-center mt-2 relative">
               <img
                 src="/images/news.png"
                 alt="News Image"
-                className="w-auto h-96"
+                className="w-auto max-w-full h-48 md:h-96"
               />
               <div className="absolute inset-0 bottom-0 h-3/4 bg-gradient-to-t from-black to-transparent" />
             </div>
           )}
-
-          
 
           <div
             className={`flex justify-center mt-4 ${
@@ -99,7 +96,7 @@ export default function News() {
               fadeIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            <div className="w-[1250px] h-[430px] flex relative rounded-lg">
+            <div className="w-full max-w-[1250px] h-[430px] flex relative rounded-lg mx-auto">
               <div
                 className="flex-[0.75] flex items-center justify-center rounded-none relative"
                 style={{
@@ -115,7 +112,7 @@ export default function News() {
                   <img
                     src={shapeImages[currentIndex]}
                     alt={`Shape ${currentIndex + 1}`}
-                    className="w-full h-full object-fill"
+                    className="w-full h-full object-cover"
                   />
                 </div>
               </div>
@@ -131,7 +128,6 @@ export default function News() {
                   background: "rgba(58, 58, 58, 0.8)",
                 }}
               >
-                
                 <div
                   className="absolute inset-0 bg-gradient-to-t from-transparent to-black opacity-30 rounded-r-lg"
                   style={{
@@ -140,8 +136,7 @@ export default function News() {
                   }}
                 ></div>
 
-                {/* Text Layer */}
-                <span className="text-white text-2xl relative z-10">
+                <span className="text-white text-xl md:text-2xl relative z-10">
                   {shapeTexts[currentIndex]}
                 </span>
               </div>
@@ -169,17 +164,17 @@ export default function News() {
               fadeIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            <div className="flex items-center justify-center w-5 h-5 border-2 border-white rounded-full cursor-pointer">
-              <FaChevronDown className="text-white text-1xl" />
+            <div className="flex items-center justify-center w-8 h-8 border-2 border-white rounded-full cursor-pointer">
+              <FaChevronDown className="text-white text-xl" />
             </div>
           </div>
 
           <div className="flex justify-center mt-24">
-            <div className="grid grid-cols-3 gap-20">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
               {shapeGrid.map((shape, index) => (
                 <div
                   key={shape.id}
-                  className="w-[360px] h-[470px] rounded-[17px] overflow-hidden bg-gray-800 relative"
+                  className="w-full max-w-[360px] h-[470px] rounded-[17px] overflow-hidden bg-gray-800 relative"
                   style={{ boxShadow: "0 4px 10px rgba(0, 0, 0, 0.5)" }}
                 >
                   <div
@@ -189,7 +184,7 @@ export default function News() {
                     <img
                       src={newsImages[index]}
                       alt={`Shape ${index + 1}`}
-                      className="w-full h-full object-fill rounded-t-[17px]"
+                      className="w-full h-full object-cover rounded-t-[17px]"
                     />
                     <div
                       className="absolute top-0 left-0 w-full h-full rounded-t-[17px]"
@@ -200,7 +195,6 @@ export default function News() {
                     ></div>
                   </div>
 
-                  {/* Divider Line */}
                   <div
                     className="w-full h-[1px] bg-gray-500"
                     style={{
@@ -210,7 +204,6 @@ export default function News() {
                     }}
                   ></div>
 
-                  {/* Bottom Part with Text */}
                   <div
                     className="w-full h-1/3 rounded-b-[17px] flex items-center justify-center"
                     style={{ backgroundColor: "rgba(58, 58, 58, 0.6)" }}
@@ -218,7 +211,6 @@ export default function News() {
                     <span className="text-white text-lg">{shape.text}</span>
                   </div>
 
-                  {/* Border with Gradient and Rounded Caps */}
                   <div
                     className="absolute inset-0 rounded-[17px] pointer-events-none"
                     style={{
