@@ -46,7 +46,7 @@ function Footer() {
           border: 'none',
           height: '2px',              
           backgroundColor: '#808080', 
-          width: '85%',               
+          width: '82.5%',               
           margin: '0 auto',           
         }} 
       />
@@ -55,7 +55,7 @@ function Footer() {
         <p className="mt-4 text-sm text-left">Copyright SOCS © 2024. All rights reserved</p>
       </div>
       
-      <div className="flex flex-col items-end mr-28">
+      <div className="flex flex-col items-end mr-32">
         {/* Social Icons */}
         <div className="flex space-x-4 -mt-5">
           <a href="#" className="hover:text-gray-400">
