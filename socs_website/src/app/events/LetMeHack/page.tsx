@@ -3,16 +3,11 @@ import Navbar from "@/components/navbar";
 import EventNavBar from "@/components/eventsNavBar";
 import ImageSlider from "@/components/cardSliderPage";
 import { Poppins } from "next/font/google";
-import { useEffect, useState } from "react";
-import Image from "next/image";
 
-const poppins1 = Poppins({ weight: "100", subsets: ["latin"] });
-const poppins2 = Poppins({ weight: "200", subsets: ["latin"] });
+
+
 const poppins3 = Poppins({ weight: "300", subsets: ["latin"] });
-const poppins4 = Poppins({ weight: "400", subsets: ["latin"] });
-const poppins5 = Poppins({ weight: "500", subsets: ["latin"] });
-const poppins6 = Poppins({ weight: "600", subsets: ["latin"] });
-const poppins7 = Poppins({ weight: "700", subsets: ["latin"] });
+
 
 export default function Home() {
   const images = [
