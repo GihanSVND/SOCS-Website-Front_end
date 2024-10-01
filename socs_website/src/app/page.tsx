@@ -41,7 +41,7 @@ export default function Home() {
                     </p>
                     <p className="mt-10 mx-auto max-w-5xl p-5">
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+                        the  standard dummy text ever since the 1500s, when an unknown printer took a galley
                         of type and scrambled it to make a type specimen book. It has survived not only five centuries,
                         but also the leap into electronic typesetting, remaining essentially unchanged. It was
                         popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
@@ -75,7 +75,7 @@ export default function Home() {
                 <h2 className="text-4xl font-semibold mb-4 text-white">COLLABORATIONS</h2>
                 <p className="mt-10 mx-auto max-w-5xl p-5">
                     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                     standard dummy text ever since the 1500s, when an unknown printer took a galley of type
                     and scrambled it to make a type specimen book. It has survived not only five centuries, but also the
                     leap into electronic typesetting, remaining essentially unchanged.
                 </p>
