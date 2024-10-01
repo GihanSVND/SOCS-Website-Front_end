@@ -4,13 +4,8 @@ import Navbar from "@/components/navbar";
 import AnnouncementsCardComponent from "@/components/announcements_card";
 import Committee_member_gallery from "@/components/committee_member_gallery";
 import Footer from "@/components/footer";
-import ImageSlider from "@/components/cardSliderPage";
 
 export default function Home() {
-    const images = [
-        "/images/annoncmentcard.png",
-    ];
-
 
     return (
         <div className="bg-black text-white">
@@ -95,7 +90,7 @@ export default function Home() {
                     </div>
 
                     <div className="bg-white rounded-lg overflow-hidden shadow-lg">
-                        <img src="/images/image2.jpg" alt="Collaboration 2" className="w-full h-60 object-cover" />
+                        <img src="/images/annoncmentcard.png" alt="Collaboration 2" className="w-full h-60 object-cover" />
                         <div className="p-5">
                             <h3 className="text-xl font-semibold">Collaboration 2</h3>
                             <p className="text-gray-700 mt-3">Description of the second collaboration.</p>
@@ -103,7 +98,7 @@ export default function Home() {
                     </div>
 
                     <div className="bg-white rounded-lg overflow-hidden shadow-lg">
-                        <img src="/images/image3.jpg" alt="Collaboration 3" className="w-full h-60 object-cover" />
+                        <img src="/images/annoncmentcard.png" alt="Collaboration 3" className="w-full h-60 object-cover" />
                         <div className="p-5">
                             <h3 className="text-xl font-semibold">Collaboration 3</h3>
                             <p className="text-gray-700 mt-3">Description of the third collaboration.</p>
