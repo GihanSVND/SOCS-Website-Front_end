@@ -27,7 +27,7 @@ export default function About() {
             </h2>
             <p className={`${poppins3.className} text-[17px] leading-[25.5px] py-10 ml-16`}>
               Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
+              industry. Lorem Ipsum has been the industrys standard dummy text
               ever since the 1500s, when an unknown printer took a galley of
               type and scrambled it to make a type specimen book. It has
               survived not only five centuries, but also the leap into
@@ -86,7 +86,7 @@ export default function About() {
                 VISION
               </h2>
               <p className={`${poppins3.className} text-[14px] font-light leading-[21px] text-gray-300 pl-4`}>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.
               </p>
             </div>
 
@@ -96,7 +96,7 @@ export default function About() {
                 MISSION
               </h2>
               <p className={`${poppins3.className} text-[14px] font-light leading-[21px] text-gray-300 pr-4`}>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.
               </p>
             </div>
           </div>
