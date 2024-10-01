@@ -4,9 +4,9 @@ import { Poppins } from "next/font/google";
 import { FaFacebookF, FaLinkedinIn, FaInstagram } from "react-icons/fa";
 import Image from 'next/image';
 
-const poppins1 = Poppins({ weight: "100", subsets: ["latin"] });
+
 const poppins3 = Poppins({ weight: "300", subsets: ["latin"] });
-const poppins7 = Poppins({ weight: "700", subsets: ["latin"] });
+
 
 export default function About() {
   return (
