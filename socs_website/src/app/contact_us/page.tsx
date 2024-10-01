@@ -1,6 +1,9 @@
 "use client";
 
 import Navbar from "@/components/navbar";
+import { faFacebookSquare, faInstagram, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { faEnvelope, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 
 export default function ContactUs() {
@@ -168,6 +171,48 @@ export default function ContactUs() {
                     />
                 </div>
             </section>
+
+            {/* Social Figures Section */}
+      <section className="bg-black py-20">
+        <div className="text-center mb-12">
+          <h2 className="text-white text-4xl font-bold">SOCIAL FIGURES</h2>
+        </div>
+
+        <div className="flex justify-center gap-8 mb-16">
+          {/* Facebook */}
+          <a href="#" className="text-white hover:text-gray-500">
+            <FontAwesomeIcon icon={faFacebookSquare} size="2x" />
+            <p className="mt-2 text-sm">Society of Computer Sciences - SUSL</p>
+          </a>
+          {/* Instagram */}
+          <a href="#" className="text-white hover:text-gray-500">
+            <FontAwesomeIcon icon={faInstagram} size="2x" />
+            <p className="mt-2 text-sm">Society of Computer Sciences - SUSL</p>
+          </a>
+          {/* LinkedIn */}
+          <a href="#" className="text-white hover:text-gray-500">
+            <FontAwesomeIcon icon={faLinkedin} size="2x" />
+            <p className="mt-2 text-sm">Society of Computer Sciences - SUSL</p>
+          </a>
+          {/* Email */}
+          <a
+            href="mailto:socs@appsc.sab.ac.lk"
+            className="text-white hover:text-gray-500"
+          >
+            <FontAwesomeIcon icon={faEnvelope} size="2x" />
+            <p className="mt-2 text-sm">socs@appsc.sab.ac.lk</p>
+          </a>
+        </div>
+
+        {/* Address Section */}
+        <div className="text-center text-white">
+          <p>Society of Computer Sciences,</p>
+          <p>Faculty of Computer Sciences,</p>
+          <p>Sabaragamuwa University of Sri Lanka,</p>
+          <p>P.O. Box 02, Belihuloya, 70140, Sri Lanka.</p>
+        </div>
+      </section>
         </div>
     );
 }
+
