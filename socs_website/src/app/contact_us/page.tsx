@@ -1,6 +1,5 @@
 "use client";
 
-import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import {
   faFacebookSquare,
@@ -229,7 +228,6 @@ export default function ContactUs() {
           <p>P.O. Box 02, Belihuloya, 70140, Sri Lanka.</p>
         </div>
       </section>
-      <Footer />
     </div>
   );
 }
