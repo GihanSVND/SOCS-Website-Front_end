@@ -13,11 +13,8 @@ export default function About() {
     <div className="bg-black text-white min-h-screen">
       <Navbar />
       
-      {/* First Section */}
       <div className="container mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          
-          {/* Left Text Section */}
           <div className="space-y-6 text-left">
             <h1 className={`${poppins3.className} text-[100px] text-gray-300 leading-none mt-7 ml-16 mb-2`}>
               SOCS
@@ -48,8 +45,6 @@ export default function About() {
               </a>
             </div>
           </div>
-          
-          {/* Right Image Section */}
           <div className="flex justify-center">
             <Image
               src="/images/MountImg.png"
@@ -61,36 +56,26 @@ export default function About() {
           </div>
         </div>
       </div>
-
-      {/* Second Section: Vision & Mission */}
       <div className="container mx-auto px-6 py-12 mt-5">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start ">
-          
-          {/* Left Image */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-0 items-start ">
           <div className="flex justify-start md:justify-start">
             <Image
-              src="/images/statue-vision.png" // Replace with your actual image path
+              src="/images/statue-vision.png" 
               alt="Statue with futuristic glasses"
               width={500}
               height={500}
               className="object-cover"
             />
           </div>
-
-          {/* Right Text */}
           <div className="space-y-12 mt-20" style={{ marginRight: "50px" }}>
-            
-            {/* Vision Section */}
             <div className="text-left">
               <h2 className={`${poppins3.className} text-[45px] font-light leading-[67.5px] border-l-2 border-gray-500 pl-4 mb-4`}>
                 VISION
               </h2>
-              <p className={`${poppins3.className} text-[14px] font-light leading-[21px] text-gray-300 pl-4`}>
+              <p className={`${poppins3.className} text-[14px] font-light leading-[21px] text-gray-300 pl-4 w-full`}>
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.
               </p>
             </div>
-
-            {/* Mission Section */}
             <div className="text-right">
               <h2 className={`${poppins3.className} text-[45px] font-light leading-[67.5px] border-r-2 border-gray-500 pr-4 mb-4`} style={{ direction: 'rtl' }}>
                 MISSION
