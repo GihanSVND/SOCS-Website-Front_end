@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import Navbar from "@/components/navbar";
-
 import {
   faFacebookSquare,
   faInstagram,
@@ -12,7 +11,6 @@ import { faEnvelope, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import Footer from "@/components/footer";
-
 
 export default function ContactUs() {
   const [fadeOut, setFadeOut] = useState(false);
@@ -268,7 +266,7 @@ export default function ContactUs() {
           </a>
         </div>
       </section>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
