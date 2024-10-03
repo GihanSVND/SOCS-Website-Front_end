@@ -65,7 +65,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="col-span-2 row-span-2 col-start-3 row-start-1">
+          <div className="col-span-6 sm:col-span-2 row-span-2 cols-start-2 sm:col-start-3 row-start-1 p-10 sm:p-0">
             <div className="col-span-2 col-start-1 row-start-2">
               <div className="col-start-2 row-start-1">
                 <ImageSlider images={images} />

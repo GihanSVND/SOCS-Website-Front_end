@@ -12,9 +12,9 @@ export default function News() {
 
   const shapeImages = [
     "/images/annoncmentcard.png",
-    "/images/news.png",
     "/images/annoncmentcard.png",
-    "/images/news.png",
+    "/images/annoncmentcard.png",
+    "/images/annoncmentcard.png",
     "/images/annoncmentcard.png",
   ];
 
@@ -43,7 +43,7 @@ export default function News() {
   ];
 
   const shapeTexts = [
-    "This is 1st",
+    "Welcome to my GitHub profile! I'm a budding software engineer with a passion for mastering the world of full stack development. As a newcomer to the field, I'm excited to embark on a journey of learning, growth, and creativity. Through my GitHub projects, you'll witness my commitment to honing my skills and creating innovative solutions that span from front-end design to back-end functionality. Join me as I document my progress and contribute to the dynamic landscape of software development",
     "This is 2nd",
     "This is 3rd",
     "This is 4th",
@@ -89,59 +89,64 @@ export default function News() {
             </div>
           )}
 
-          <div
-            className={`flex justify-center mt-4 ${
-              showImage ? "mt-8" : "mt-2"
-            } transition-all duration-500 ${
-              fadeIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            }`}
-          >
-            <div className="w-full max-w-[1250px] h-[430px] flex relative rounded-lg mx-auto">
-              <div
-                className="flex-[0.75] flex items-center justify-center rounded-none relative"
-                style={{
-                  borderTopLeftRadius: "24px",
-                  borderBottomLeftRadius: "24px",
-                  borderWidth: "1px",
-                  borderStyle: "solid",
-                  borderColor: "white",
-                  background: "rgba(58, 58, 58, 0.6)",
-                }}
-              >
-                <div className="w-full h-full relative overflow-hidden rounded-l-[24px]">
-                  <img
-                    src={shapeImages[currentIndex]}
-                    alt={`Shape ${currentIndex + 1}`}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
+<div
+  className={`flex justify-center mt-4 ${
+    showImage ? "mt-8" : "mt-2"
+  } transition-all duration-500 ${
+    fadeIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+  }`}
+>
+  <div className="w-full max-w-[1250px] h-[430px] flex flex-col md:flex-row relative rounded-lg mx-auto">
+    {/* Left Shape */}
+    <div
+      className="flex-1 flex items-center justify-center relative"
+      style={{
+        flex: "3 1 0%",  // 3/4 of the space
+        borderTopLeftRadius: "17px",
+        borderBottomLeftRadius: "17px",
+        borderWidth: "1px",
+        borderStyle: "solid",
+        borderColor: "white",
+        background: "rgba(58, 58, 58, 0.6)",
+      }}
+    >
+      <div className="w-full h-full relative overflow-hidden rounded-l-[17px]">
+        <img
+          src={shapeImages[currentIndex]}
+          alt={`Shape ${currentIndex + 1}`}
+          className="w-full h-full object-cover"
+        />
+      </div>
+    </div>
 
-              <div
-                className="flex-[0.25] flex items-center justify-center rounded-r-lg relative"
-                style={{
-                  borderTopRightRadius: "24px",
-                  borderBottomRightRadius: "24px",
-                  borderWidth: "0.5px",
-                  borderStyle: "solid",
-                  borderColor: "white",
-                  background: "rgba(58, 58, 58, 0.8)",
-                }}
-              >
-                <div
-                  className="absolute inset-0 bg-gradient-to-t from-transparent to-black opacity-30 rounded-r-lg"
-                  style={{
-                    borderTopRightRadius: "24px",
-                    borderBottomRightRadius: "24px",
-                  }}
-                ></div>
+    {/* Right Shape */}
+    <div
+      className="flex-1 flex items-center justify-center relative"
+      style={{
+        flex: "1 1 0%",  // 1/4 of the space
+        borderTopRightRadius: "17px",
+        borderBottomRightRadius: "17px",
+        borderWidth: "0.5px",
+        borderStyle: "solid",
+        borderColor: "white",
+        background: "rgba(58, 58, 58, 0.8)",
+      }}
+    >
+      <div
+        className="absolute inset-0 bg-gradient-to-t from-transparent to-black opacity-30 rounded-r-[17px]"
+      ></div>
 
-                <span className="text-white text-xl md:text-2xl relative z-10">
-                  {shapeTexts[currentIndex]}
-                </span>
-              </div>
-            </div>
-          </div>
+      <span className="text-white text-xl md:text-2xl relative z-10">
+        {shapeTexts[currentIndex]}
+      </span>
+    </div>
+  </div>
+</div>
+
+
+
+
+
 
           <div className="flex justify-center mt-8">
             {shapeImages.map((_, index) => (
