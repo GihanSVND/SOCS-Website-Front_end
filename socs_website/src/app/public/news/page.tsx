@@ -43,7 +43,7 @@ export default function News() {
   ];
 
   const shapeTexts = [
-    "Welcome to my GitHub profile! I'm a budding software engineer with a passion for mastering the world of full stack development. As a newcomer to the field, I'm excited to embark on a journey of learning, growth, and creativity. Through my GitHub projects, you'll witness my commitment to honing my skills and creating innovative solutions that span from front-end design to back-end functionality. Join me as I document my progress and contribute to the dynamic landscape of software development",
+    "Welcome to my GitHub profile! I'm a budding software engineer with a passion for mastering the world of full stack development.",
     "This is 2nd",
     "This is 3rd",
     "This is 4th",
