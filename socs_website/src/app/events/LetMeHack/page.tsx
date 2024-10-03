@@ -3,16 +3,8 @@ import Navbar from "@/components/navbar";
 import EventNavBar from "@/components/eventsNavBar";
 import ImageSlider from "@/components/cardSliderPage";
 import { Poppins } from "next/font/google";
-import { useEffect, useState } from "react";
-import Image from "next/image";
 
-const poppins1 = Poppins({ weight: "100", subsets: ["latin"] });
-const poppins2 = Poppins({ weight: "200", subsets: ["latin"] });
 const poppins3 = Poppins({ weight: "300", subsets: ["latin"] });
-const poppins4 = Poppins({ weight: "400", subsets: ["latin"] });
-const poppins5 = Poppins({ weight: "500", subsets: ["latin"] });
-const poppins6 = Poppins({ weight: "600", subsets: ["latin"] });
-const poppins7 = Poppins({ weight: "700", subsets: ["latin"] });
 
 export default function Home() {
   const images = [
@@ -43,72 +35,72 @@ export default function Home() {
         </h1>
       </div>
 
-<div>
-      <div className="grid grid-cols-6 grid-rows-2 gap-4 px-[200px]">
-        <div>
-          <div className="col-span-2 col-start-1 row-start-2">
-            <div className="col-start-2 row-start-1">
-              <ImageSlider images={images} />
+      <div>
+        <div className="grid grid-cols-6 grid-rows-2 gap-4  md:px-[100px]">
+          <div>
+            <div className="col-span-2 col-start-1 row-start-2 hidden md:block">
+              <div className="col-start-2 row-start-1">
+                <ImageSlider images={images} />
+              </div>
+            </div>
+          </div>
+          <div>
+            <div className="col-span-2 col-start-1 row-start-2 hidden sm:block">
+              <div className="col-start-2 row-start-1">
+                <ImageSlider images={images} />
+              </div>
+            </div>
+          </div>
+          <div className="col-start-1 row-start-2 hidden md:block">
+            <div className="col-span-2 col-start-1 row-start-2">
+              <div className="col-start-2 row-start-1">
+                <ImageSlider images={images} />
+              </div>
+            </div>
+          </div>
+          <div className="col-start-2 row-start-2 hidden sm:block">
+            <div className="col-span-2 col-start-1 row-start-2">
+              <div className="col-start-2 row-start-1">
+                <ImageSlider images={images} />
+              </div>
+            </div>
+          </div>
+          <div className="col-span-6 sm:col-span-2 row-span-2 cols-start-2 sm:col-start-3 row-start-1 p-10 sm:p-0">
+            <div className="col-span-2 col-start-1 row-start-2">
+              <div className="col-start-2 row-start-1">
+                <ImageSlider images={images} />
+              </div>
+            </div>
+          </div>
+          <div className="col-start-5 row-start-1 hidden sm:block">
+            <div className="col-span-2 col-start-1 row-start-2">
+              <div className="col-start-2 row-start-1">
+                <ImageSlider images={images} />
+              </div>
+            </div>
+          </div>
+          <div className="col-start-6 row-start-1 hidden md:block">
+            <div className="col-span-2 col-start-1 row-start-2">
+              <div className="col-start-2 row-start-1">
+                <ImageSlider images={images} />
+              </div>
+            </div>
+          </div>
+          <div className="col-start-5 row-start-2 hidden sm:block">
+            <div className="col-span-2 col-start-1 row-start-2">
+              <div className="col-start-2 row-start-1">
+                <ImageSlider images={images} />
+              </div>
+            </div>
+          </div>
+          <div className="col-start-6 row-start-2 hidden md:block">
+            <div className="col-span-2 col-start-1 row-start-2">
+              <div className="col-start-2 row-start-1">
+                <ImageSlider images={images} />
+              </div>
             </div>
           </div>
         </div>
-        <div>
-          <div className="col-span-2 col-start-1 row-start-2">
-            <div className="col-start-2 row-start-1">
-              <ImageSlider images={images} />
-            </div>
-          </div>
-        </div>
-        <div className="col-start-1 row-start-2">
-          <div className="col-span-2 col-start-1 row-start-2">
-            <div className="col-start-2 row-start-1">
-              <ImageSlider images={images} />
-            </div>
-          </div>
-        </div>
-        <div className="col-start-2 row-start-2">
-          <div className="col-span-2 col-start-1 row-start-2">
-            <div className="col-start-2 row-start-1">
-              <ImageSlider images={images} />
-            </div>
-          </div>
-        </div>
-        <div className="col-span-2 row-span-2 col-start-3 row-start-1">
-          <div className="col-span-2 col-start-1 row-start-2">
-            <div className="col-start-2 row-start-1">
-              <ImageSlider images={images} />
-            </div>
-          </div>
-        </div>
-        <div className="col-start-5 row-start-1">
-          <div className="col-span-2 col-start-1 row-start-2">
-            <div className="col-start-2 row-start-1">
-              <ImageSlider images={images} />
-            </div>
-          </div>
-        </div>
-        <div className="col-start-6 row-start-1">
-          <div className="col-span-2 col-start-1 row-start-2">
-            <div className="col-start-2 row-start-1">
-              <ImageSlider images={images} />
-            </div>
-          </div>
-        </div>
-        <div className="col-start-5 row-start-2">
-          <div className="col-span-2 col-start-1 row-start-2">
-            <div className="col-start-2 row-start-1">
-              <ImageSlider images={images} />
-            </div>
-          </div>
-        </div>
-        <div className="col-start-6 row-start-2">
-          <div className="col-span-2 col-start-1 row-start-2">
-            <div className="col-start-2 row-start-1">
-              <ImageSlider images={images} />
-            </div>
-          </div>
-        </div>
-      </div>
       </div>
     </div>
   );
