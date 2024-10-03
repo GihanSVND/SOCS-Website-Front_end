@@ -29,10 +29,10 @@ function Footer() {
               <h3 className="font-bold text-lg md:text-[20px] mb-4">Pages</h3>
               <ul className='mb-3'>
                 <li><a href="/" className="hover:underline">Home</a></li>
-                <li><a href="/about" className="hover:underline">About</a></li>
-                <li><a href="/news" className="hover:underline">News</a></li>
-                <li><a href="/events/LetMeHack" className="hover:underline">Events</a></li>
-                <li><a href="/contact_us" className="hover:underline">Contact Us</a></li>
+                <li><a href="/public/about" className="hover:underline">About</a></li>
+                <li><a href="/public/news" className="hover:underline">News</a></li>
+                <li><a href="/public/events/LetMeHack" className="hover:underline">Events</a></li>
+                <li><a href="/public/contact_us" className="hover:underline">Contact Us</a></li>
               </ul>
             </div>
           </div>

@@ -7,10 +7,10 @@ const Navbar = () => {
 
     const menuItems = [
         { name: 'Home', href: '/' },
-        { name: 'About', href: '/about' },
-        { name: 'News', href: '/news' },
-        { name: 'Event', href: '/events/LetMeHack' },
-        { name: 'Contact Us', href: '/contact_us' },
+        { name: 'About', href: '/public/about' },
+        { name: 'News', href: '/public/news' },
+        { name: 'Event', href: '/public/events/LetMeHack' },
+        { name: 'Contact Us', href: '/public/contact_us' },
     ];
 
     return (
