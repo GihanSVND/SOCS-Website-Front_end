@@ -191,14 +191,14 @@ export default function ContactUs() {
         <div className="mr-0 relative -mt-10">
           {/* First Image */}
           <img
-            src="/images/contact us.png"
+            src="/images/contact%20us.png"
             alt="Contact Us"
             style={{ width: "600px", height: "auto" }}
           />
 
           {/* New Image - positioned absolutely over the first image */}
           <img
-            src="/images/Contct_Us DarkImage.png" // New image
+            src="/images/Contct_Us%20DarkImage.png" // New image
             alt="New Image"
             className={`absolute top-6 left-0 transition-opacity duration-5000 ${
               fadeOut ? "opacity-0 translate-x-[100%]" : "opacity-100"
