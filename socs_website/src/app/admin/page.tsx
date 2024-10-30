@@ -30,7 +30,7 @@ export default function LoginPage() {
                 }
             }
         } catch (error) {
-            setError('Failed to log in. Please try again later.');
+            setError('Failed to log in. Please try again later.'+ error);
         }
     };
 

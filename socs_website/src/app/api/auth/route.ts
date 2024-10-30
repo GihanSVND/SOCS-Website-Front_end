@@ -15,7 +15,11 @@ export async function POST(req: NextRequest) {
         }
 
         return NextResponse.json({message: 'Login successful', user: data.user}, {status: 200});
-    } catch (error: any) {
-        return NextResponse.json({error: 'Failed to log in'}, {status: 500});
+    } catch (error) {
+        let errorMessage = 'Failed to log in';
+        if (error instanceof Error) {
+            errorMessage += ': ' + error.message;
+        }
+        return NextResponse.json({error: errorMessage}, {status: 500});
     }
 }
