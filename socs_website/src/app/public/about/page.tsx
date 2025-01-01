@@ -69,7 +69,7 @@ export default function About() {
           {/* Left Image */}
           <div className="flex justify-start md:justify-start">
             <Image
-              src="/images/statue-vision.png" // Replace with your actual image path
+              src="/images/statue-vision.png"
               alt="Statue with futuristic glasses"
               width={500}
               height={500}
