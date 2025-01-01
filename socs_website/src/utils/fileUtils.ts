@@ -14,7 +14,7 @@ export async function saveBase64File(base64File: string, uploadDir: string): Pro
         throw new Error('Invalid image data');
     }
 
-    const fileType = matches[1];
+    // const fileType = matches[1];
     const imageData = matches[2];
     const buffer = Buffer.from(imageData, 'base64');
 

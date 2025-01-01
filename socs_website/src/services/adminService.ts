@@ -21,7 +21,7 @@ export async function fetchAll(tableName: string) {
  * @param record The record to insert or update.
  * @param idField The name of the ID field in the table (default: 'id').
  */
-export async function saveRecord(tableName: string, record: Record<string, any>, idField = 'id') {
+export async function saveRecord(tableName: string, record: Record<string, unknown>, idField = 'id') {
     try {
         const {[idField]: id, ...recordWithoutId} = record;
 
