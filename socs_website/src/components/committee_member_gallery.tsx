@@ -1,44 +1,47 @@
+'use client';
+
+import {useEffect, useState} from 'react';
 import Image from 'next/image';
+import {supabase} from '@/services/supabaseClient';
 
-const teamMembers = [
-    {
-        name: 'Mr. Shavinda Wanigasekara',
-        role: 'PRESIDENT',
-        imageSrc: '/group9.png', // Replace with the correct image path
-    },
-    {
-        name: 'Mr. Gihan Savinda',
-        role: 'SECRETARY',
-        imageSrc: '/images/2.png', // Replace with the correct image path
-    },
-    {
-        name: 'Miss Ashansa Wijeratne',
-        role: 'SENIOR TREASURE',
-        imageSrc: '/group9.png', // Replace with the correct image path
-    },
-    {
-        name: 'Mr. Ravindu Chandrarathna',
-        role: 'TREASURE',
-        imageSrc: '/group9.png', // Replace with the correct image path
-    },
-    {
-        name: 'Mr. Sajika Dilshan',
-        role: 'VICE PRESIDENT',
-        imageSrc: '/group9.png', // Replace with the correct image path
-    },
-    {
-        name: 'Ms. Kawmadi Sandakal',
-        role: 'EDITOR',
-        imageSrc: '/group9.png', // Replace with the correct image path
-    },
-    {
-        name: 'Ms. Isuri Perera',
-        role: 'VICE SECRETARY',
-        imageSrc: '/group9.png', // Replace with the correct image path
-    },
-];
+abstract class CommitteeMember {
+    abstract name: string;
+    abstract role: string;
+    abstract imageSrc: string;
+}
 
-const Committee_member_gallery = () => {
+const CommitteeMemberGallery = () => {
+    const [teamMembers, setTeamMembers] = useState<CommitteeMember[]>([]); // Use CommitteeMember as type
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchTeamMembers = async () => {
+            try {
+                const {data, error} = await supabase.from('committee_members').select('*');
+                console.log(data);
+                if (error) throw error;
+
+                setTeamMembers(data || []);
+            } catch (error) {
+                // Narrowing the 'error' type
+                if (error instanceof Error) {
+                    console.error('Error fetching team members:', error.message);
+                } else {
+                    console.error('An unexpected error occurred:', error);
+                }
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchTeamMembers();
+    }, []);
+
+
+    if (loading) {
+        return <div className="text-center text-white py-7">Loading team members...</div>;
+    }
+
     return (
         <section className="py-7 bg-black text-white">
             {/* First row - 4 items */}
@@ -86,4 +89,4 @@ const Committee_member_gallery = () => {
     );
 };
 
-export default Committee_member_gallery;
+export default CommitteeMemberGallery;
