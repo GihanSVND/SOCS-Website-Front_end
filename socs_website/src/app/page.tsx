@@ -1,9 +1,9 @@
 'use client'
 import Image from 'next/image';
 import Navbar from "@/components/navbar";
-import AnnouncementsCardComponent from "@/components/announcements_card";
 import Committee_member_gallery from "@/components/committee_member_gallery";
 import Footer from "@/components/footer";
+import AnnouncementsSection from "@/components/announcementSection";
 
 export default function Home() {
 
@@ -52,15 +52,7 @@ export default function Home() {
             </section>
 
             {/* Announcements Section */}
-            <section className="text-center py-16 bg-black">
-                <h2 className="text-4xl font-semibold mb-4 text-white">ANNOUNCEMENT</h2>
-                {/* Container for the card components */}
-                <div className="flex justify-center items-center space-x-8 mt-10">
-                    <AnnouncementsCardComponent/>
-                    <AnnouncementsCardComponent/>
-                    <AnnouncementsCardComponent/>
-                </div>
-            </section>
+            <AnnouncementsSection></AnnouncementsSection>
 
             {/* Executive Committee Section */}
             <section className="text-center py-16 bg-black">
