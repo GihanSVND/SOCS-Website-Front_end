@@ -1,7 +1,6 @@
 'use client'
 import Image from 'next/image';
 import Navbar from "@/components/navbar";
-import AnnouncementsCardComponent from "@/components/announcements_card";
 import Committee_member_gallery from "@/components/committee_member_gallery";
 import Footer from "@/components/footer";
 import AnnouncementsSection from "@/components/announcementSection";
