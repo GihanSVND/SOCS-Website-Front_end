@@ -11,7 +11,7 @@ interface CommitteeMembers {
     imageSrc: string;
 }
 
-const CommitteeMembersPage = () => {
+const AdminCommitteeMembersPage = () => {
     const [committeeMembers, setCommitteeMembers] = useState<CommitteeMembers[]>([]);
     const [loading, setLoading] = useState(true);
     const [formData, setFormData] = useState({id: '', name: '', role: '', imageSrc: ''});
@@ -145,4 +145,4 @@ const CommitteeMembersPage = () => {
     );
 };
 
-export default CommitteeMembersPage;
+export default AdminCommitteeMembersPage;

@@ -1,7 +1,7 @@
 'use client';
 
 import {useEffect, useState} from 'react';
-import AnnouncementsCardComponent from '@/components/announcements_card';
+import AnnouncementsCardComponent from '@/components/cards/announcements_card';
 import {fetchAll} from '@/services/adminService';
 
 interface Announcement {
@@ -30,7 +30,7 @@ const AnnouncementsPage = () => {
         loadAnnouncements();
     }, []);
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <div className="text-center">Loading...</div>;
 
     return (
         <section className="text-center py-16 bg-black">
