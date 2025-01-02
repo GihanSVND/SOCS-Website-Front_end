@@ -11,7 +11,7 @@ interface Announcement {
     imageSrc: string;
 }
 
-const AnnouncementsPage = () => {
+const AdminAnnouncementsPage = () => {
     const [announcements, setAnnouncements] = useState<Announcement[]>([]);
     const [formData, setFormData] = useState({id: '', title: '', description: '', imageSrc: ''});
     const [loading, setLoading] = useState(true);
@@ -147,4 +147,4 @@ const AnnouncementsPage = () => {
     );
 };
 
-export default AnnouncementsPage;
+export default AdminAnnouncementsPage;
