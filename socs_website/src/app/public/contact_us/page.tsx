@@ -1,16 +1,29 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Navbar from "@/components/navbar";
 import {
   faFacebookSquare,
   faInstagram,
   faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
+import Footer from "@/components/footer";
 
 export default function ContactUs() {
+  const [fadeOut, setFadeOut] = useState(false);
+
+  // Trigger fade-out after 2 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setFadeOut(true);
+    }, 2000); // 2-second delay
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="bg-black min-h-screen">
       <Navbar />
@@ -176,20 +189,33 @@ export default function ContactUs() {
 
         {/* Image Section */}
         <div className="mr-0 relative -mt-10">
+          {/* First Image */}
           <img
-            src="/images/contact us.png"
+            src="/images/contact%20us.png"
             alt="Contact Us"
             style={{ width: "600px", height: "auto" }}
           />
-          <div
-            className="absolute top-0 left-0 h-full w-full bg-gradient-to-l from-black via-black to-transparent opacity-100"
-            style={{ clipPath: "inset(0 0% 0 0)" }}
+
+          {/* New Image - positioned absolutely over the first image */}
+          <img
+            src="/images/Contct_Us%20DarkImage.png" // New image
+            alt="New Image"
+            className={`absolute top-6 left-0 transition-opacity duration-5000 ${
+              fadeOut ? "opacity-0 translate-x-[100%]" : "opacity-100"
+            }`}
+            style={{
+              width: "600px", // Adjust width
+              height: "900px", // Adjust height
+              objectFit: "cover", // Ensures it scales well
+              opacity: fadeOut ? 0 : 1, // Set opacity to 0 after fading out
+              display: fadeOut ? "none" : "block", // Hide after animation
+            }}
           />
         </div>
       </section>
 
       {/* Social Figures Section */}
-      <section className="bg-black py-20">
+      <section className="bg-black py-20 mt-32">
         <div className="text-center mb-12">
           <h2 className="text-white text-4xl font-bold">SOCIAL FIGURES</h2>
         </div>
@@ -220,14 +246,27 @@ export default function ContactUs() {
           </a>
         </div>
 
-        {/* Address Section */}
-        <div className="text-center text-white">
-          <p>Society of Computer Sciences,</p>
-          <p>Faculty of Computer Sciences,</p>
-          <p>Sabaragamuwa University of Sri Lanka,</p>
-          <p>P.O. Box 02, Belihuloya, 70140, Sri Lanka.</p>
+        {/* Location */}
+        <div className="flex justify-center">
+          <a
+            href="#"
+            className="text-white hover:text-gray-500"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div className="flex flex-col items-center text-white">
+              <FontAwesomeIcon icon={faMapMarkerAlt} size="2x" />
+              <div className="text-left ml-16">
+                <p>Society of Computer Sciences,</p>
+                <p>Faculty of Computer Sciences,</p>
+                <p>Sabaragamuwa University of Sri Lanka,</p>
+                <p>P.O. Box 02, Belihuloya, 70140, Sri Lanka.</p>
+              </div>
+            </div>
+          </a>
         </div>
       </section>
+      <Footer />
     </div>
   );
 }
