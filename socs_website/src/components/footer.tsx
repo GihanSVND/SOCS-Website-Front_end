@@ -5,7 +5,7 @@ function Footer() {
   return (
     <footer className="text-white py-8 mt-32" style={{ backgroundColor: '#0D0D0D' }}>
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between items-center">
+        <div className="flex flex-col md:flex-row justify-between items-center ">
 
           {/* Left Section */}
           <div className="mb-6 md:mb-0 text-center md:text-left">
@@ -46,7 +46,7 @@ function Footer() {
           border: 'none',
           height: '2px',              
           backgroundColor: '#808080', 
-          width: '82.5%',               
+          width: '98%',
           margin: '0 auto',           
         }} 
       />
