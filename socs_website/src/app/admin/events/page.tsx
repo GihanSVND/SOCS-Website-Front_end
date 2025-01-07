@@ -117,12 +117,12 @@ const AdminEventsPage = () => {
                         onChange: (e) => handleFileUpload(e.target.files, 'main'),
                         required: true,
                     },
-
+                    // @ts-expect-error: TypeScript cannot infer types for dynamically generated fields
                     ...formData.additionalImages.map((_, index) => ({
                         label: `Additional Image ${index + 1}`,
                         name: `additionalImage${index}`,
                         type: 'file',
-
+                        // @ts-expect-error: Dynamic type inference for event handler
                         onChange: (e) => handleFileUpload(e.target.files, 'additional', index),
                     })),
                 ]}
