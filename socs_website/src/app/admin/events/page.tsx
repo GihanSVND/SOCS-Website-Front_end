@@ -122,7 +122,7 @@ const AdminEventsPage = () => {
                         label: `Additional Image ${index + 1}`,
                         name: `additionalImage${index}`,
                         type: 'file',
-                        // @ts-ignore
+                        // @ts-expect-error
                         onChange: (e) => handleFileUpload(e.target.files, 'additional', index),
                     })),
                 ]}
