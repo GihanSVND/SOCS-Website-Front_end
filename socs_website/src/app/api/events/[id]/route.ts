@@ -1,5 +1,5 @@
 import { supabase } from '@/services/supabaseClient';
-// @ts-ignore
+
 import { NextRequest, NextResponse } from 'next/server';
 
 // @ts-ignore
