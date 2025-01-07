@@ -60,8 +60,8 @@ export default function News() {
                     {showImage && newsItems.length > 0 && (
                         <div className="flex justify-center mt-2 relative">
                             <img
-                                src={newsItems[currentIndex]?.imageSrc}
-                                alt={newsItems[currentIndex]?.title}
+                                src="/images/news.png"
+                                alt="News Image"
                                 className="w-auto max-w-full h-48 md:h-96"
                             />
                             <div
