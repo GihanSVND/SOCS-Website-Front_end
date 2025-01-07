@@ -1,6 +1,4 @@
 import {supabase} from '@/services/supabaseClient';
-import path from "path";
-import fs from "fs";
 
 /**
  * Fetches all records from the specified table.
