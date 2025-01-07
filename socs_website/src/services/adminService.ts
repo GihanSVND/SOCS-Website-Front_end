@@ -1,4 +1,6 @@
 import {supabase} from '@/services/supabaseClient';
+import path from "path";
+import fs from "fs";
 
 /**
  * Fetches all records from the specified table.
@@ -45,17 +47,31 @@ export async function saveRecord(tableName: string, record: Record<string, unkno
  * Deletes a record from the specified table.
  * @param tableName The name of the table.
  * @param id The ID of the record to delete.
+ * @param imagePath
  * @param idField The name of the ID field in the table (default: 'id').
  */
-export async function deleteRecord(tableName: string, id: string, idField = 'id') {
+export async function deleteRecord(tableName: string, id: string, imagePath?: string, idField = 'id') {
     try {
         const {error} = await supabase.from(tableName).delete().eq(idField, id);
         if (error) throw error;
+
+        if (imagePath) {
+            const response = await fetch('/api/delete_image', {
+                method: 'DELETE',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({imagePath}),
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to delete image');
+            }
+        }
     } catch (error) {
         console.error(`Error deleting record in ${tableName}:`, error);
         throw error;
     }
 }
+
 
 /**
  * Uploads a file to the server and returns the relative file path.

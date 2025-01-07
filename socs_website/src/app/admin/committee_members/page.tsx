@@ -62,9 +62,9 @@ const AdminCommitteeMembersPage = () => {
     };
 
 
-    const handleDelete = async (id: string) => {
+    const handleDelete = async (id: string, imagePath: string) => {
         try {
-            await deleteRecord('committee_members', id);
+            await deleteRecord('committee_members', id, imagePath);
             const data = await fetchAll('committee_members');
             setCommitteeMembers(data);
         } catch (error) {
@@ -132,7 +132,7 @@ const AdminCommitteeMembersPage = () => {
                                 Edit
                             </button>
                             <button
-                                onClick={() => handleDelete(member.id)}
+                                onClick={() => handleDelete(member.id, member.imageSrc)}
                                 className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600"
                             >
                                 Delete
