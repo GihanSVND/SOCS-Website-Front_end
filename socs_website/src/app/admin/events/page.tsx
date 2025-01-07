@@ -117,12 +117,12 @@ const AdminEventsPage = () => {
                         onChange: (e) => handleFileUpload(e.target.files, 'main'),
                         required: true,
                     },
-                    // @ts-expect-error
+
                     ...formData.additionalImages.map((_, index) => ({
                         label: `Additional Image ${index + 1}`,
                         name: `additionalImage${index}`,
                         type: 'file',
-                        // @ts-expect-error
+
                         onChange: (e) => handleFileUpload(e.target.files, 'additional', index),
                     })),
                 ]}
