@@ -62,15 +62,16 @@ const CollaborationsPage = () => {
         }
     };
 
-    const handleDelete = async (id: string) => {
+    const handleDelete = async (id: string, imagePath: string) => {
         try {
-            await deleteRecord('collaborations', id);
+            await deleteRecord('collaborations', id, imagePath);
             const data = await fetchAll('collaborations');
             setCollaborations(data);
         } catch (error) {
             console.error('Error deleting collaboration:', error);
         }
     };
+
 
     if (loading) return <div>Loading...</div>;
 
@@ -122,7 +123,7 @@ const CollaborationsPage = () => {
                                 Edit
                             </button>
                             <button
-                                onClick={() => handleDelete(collaboration.id!)}
+                                onClick={() => handleDelete(collaboration.id,collaboration.imageSrc)}
                                 className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600"
                             >
                                 Delete
