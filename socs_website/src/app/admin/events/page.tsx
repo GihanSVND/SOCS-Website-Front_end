@@ -90,7 +90,6 @@ const AdminEventsPage = () => {
 
     if (loading) return <div>Loading...</div>;
 
-    // @ts-ignore
     return (
         <div className="min-h-screen">
             <h1 className="text-4xl font-semibold text-center py-8">Admin: Events</h1>
@@ -118,12 +117,12 @@ const AdminEventsPage = () => {
                         onChange: (e) => handleFileUpload(e.target.files, 'main'),
                         required: true,
                     },
-                    // @ts-ignore
+                    // @ts-expect-error: TypeScript cannot infer types for dynamically generated fields
                     ...formData.additionalImages.map((_, index) => ({
                         label: `Additional Image ${index + 1}`,
                         name: `additionalImage${index}`,
                         type: 'file',
-                        // @ts-ignore
+                        // @ts-expect-error: Dynamic type inference for event handler
                         onChange: (e) => handleFileUpload(e.target.files, 'additional', index),
                     })),
                 ]}
