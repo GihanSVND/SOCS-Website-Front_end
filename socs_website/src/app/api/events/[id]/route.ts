@@ -2,7 +2,6 @@ import { supabase } from '@/services/supabaseClient';
 
 import { NextRequest, NextResponse } from 'next/server';
 
-// @ts-ignore
 export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
     const { id } = params;
 
