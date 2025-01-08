@@ -1,10 +1,10 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import { supabase } from '@/services/supabaseClient';
-import { Session } from '@supabase/supabase-js';
-import { FaNewspaper } from 'react-icons/fa'; // Example icon from react-icons
+import {useRouter} from 'next/navigation';
+import {useEffect, useState} from 'react';
+import {supabase} from '@/services/supabaseClient';
+import {Session} from '@supabase/supabase-js';
+import {FaNewspaper,FaBullhorn,FaCalendarAlt,FaHandshake,FaUniversity} from 'react-icons/fa';
 
 export default function Dashboard() {
     const router = useRouter();
@@ -12,7 +12,7 @@ export default function Dashboard() {
 
     useEffect(() => {
         async function fetchSession() {
-            const { data, error } = await supabase.auth.getSession();
+            const {data, error} = await supabase.auth.getSession();
             if (error) {
                 console.error('Error fetching session:', error);
                 return;
@@ -61,12 +61,12 @@ export default function Dashboard() {
             {/* Responsive Grid */}
             <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[50px]">
                 {[
-                    { id: 1, label: 'News', icon: <FaNewspaper />, page: '/admin/news' },
-                    { id: 2, label: 'News', icon: <FaNewspaper />, page: '/admin/news' },
-                    { id: 3, label: 'News', icon: <FaNewspaper />, page: '/admin/news' },
-                    { id: 4, label: 'News', icon: <FaNewspaper />, page: '/admin/news' },
-                    { id: 5, label: 'News', icon: <FaNewspaper />, page: '/admin/news' },
-                    { id: 6, label: 'News', icon: <FaNewspaper />, page: '/admin/news' },
+                    {id: 1, label: 'News', icon: <FaNewspaper/>, page: '/admin/news'},
+                    {id: 2, label: 'Announcements', icon: <FaBullhorn/>, page: '/admin/announcement'},
+                    {id: 3, label: 'Events', icon: <FaCalendarAlt/>, page: '/admin/events'},
+                    {id: 4, label: 'Collaborations', icon: <FaHandshake/>, page: '/admin/collaborations'},
+                    {id: 5, label: 'Committee Members', icon: <FaUniversity/>, page: '/admin/committee_members'},
+                    {id: 6, label: 'News', icon: <FaNewspaper/>, page: '/admin/news'},
                 ].map((rect) => (
                     <div
                         key={rect.id}

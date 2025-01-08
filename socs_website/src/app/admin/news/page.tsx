@@ -45,7 +45,7 @@ const NewsPage = () => {
         const file = files[0];
 
         try {
-            const path = await uploadFile(file, '/api/news_images_upload');
+            const path = await uploadFile(file, '/api/upload_image', 'news');
             setFormData({...formData, imageSrc: path});
         } catch (error) {
             console.error('Error uploading file:', error);
