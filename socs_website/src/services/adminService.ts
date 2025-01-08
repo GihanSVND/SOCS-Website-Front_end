@@ -75,8 +75,9 @@ export async function deleteRecord(tableName: string, id: string, imagePath?: st
  * Uploads a file to the server and returns the relative file path.
  * @param file The file to upload.
  * @param apiEndpoint The API endpoint to handle the file upload.
+ * @param uploadDir
  */
-export async function uploadFile(file: File, apiEndpoint: string): Promise<string> {
+export async function uploadFile(file: File, apiEndpoint: string, uploadDir: string): Promise<string> {
     const reader = new FileReader();
 
     return new Promise((resolve, reject) => {
@@ -88,7 +89,7 @@ export async function uploadFile(file: File, apiEndpoint: string): Promise<strin
                 const response = await fetch(apiEndpoint, {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({file: base64Image}),
+                    body: JSON.stringify({file: base64Image, uploadDir}),
                 });
 
                 const {path} = await response.json();
@@ -102,3 +103,4 @@ export async function uploadFile(file: File, apiEndpoint: string): Promise<strin
         reader.readAsDataURL(file);
     });
 }
+

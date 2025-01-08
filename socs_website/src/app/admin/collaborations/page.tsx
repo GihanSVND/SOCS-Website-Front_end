@@ -43,7 +43,7 @@ const CollaborationsPage = () => {
         const file = files[0];
 
         try {
-            const path = await uploadFile(file, '/api/collaboration_images_upload');
+            const path = await uploadFile(file, '/api/upload_image','collaborations');
             setFormData({...formData, imageSrc: path});
         } catch (error) {
             console.error('Error uploading file:', error);
