@@ -4,7 +4,11 @@ import {useRouter} from 'next/navigation';
 import {useEffect, useState} from 'react';
 import {supabase} from '@/services/supabaseClient';
 import {Session} from '@supabase/supabase-js';
-import {FaNewspaper,FaBullhorn,FaCalendarAlt,FaHandshake,FaUniversity} from 'react-icons/fa';
+import {FaNewspaper, FaBullhorn, FaCalendarAlt, FaHandshake, FaUniversity, FaSignOutAlt} from 'react-icons/fa';
+import {Poppins} from "next/font/google";
+
+const poppins4 = Poppins({weight: "400", subsets: ["latin"]});
+const poppins2 = Poppins({weight: "200", subsets: ["latin"]});
 
 export default function Dashboard() {
     const router = useRouter();
@@ -47,13 +51,17 @@ export default function Dashboard() {
     };
 
     return (
-        <div className="min-h-screen bg-black p-[100px]">
+        <div className="min-h-screen bg-black  py-[40px] px-[100px]">
+            
             <div className="flex justify-between items-center">
-                <h1 className="text-xl font-bold">Welcome,</h1>
+                <h1 className={`${poppins4.className} text-[30px] sm:text-[40px] md:text-[60px] font-extrabold text-gray-300`}>
+                    Publish Menu
+                </h1>
                 <button
                     onClick={handleLogout}
-                    className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                    className="flex items-center justify-center bg-white text-black px-8 py-4 rounded-[15px] hover:shadow-[0_0_20px_5px_rgba(255,255,255,0.3)] transition shadow-md"
                 >
+                    <FaSignOutAlt className="text-2xl mr-2" /> {/* Logout icon */}
                     Logout
                 </button>
             </div>
@@ -70,11 +78,11 @@ export default function Dashboard() {
                 ].map((rect) => (
                     <div
                         key={rect.id}
-                        className="border bg-[#141414] w-full aspect-square rounded-[17px] shadow-md flex flex-col items-center justify-center text-white text-lg font-semibold cursor-pointer transition hover:bg-white hover:text-black hover:shadow-[0_0_20px_10px_rgba(255,255,255,0.2)]"
+                        className={`${poppins2.className} border bg-[#141414] w-full aspect-square rounded-[17px] shadow-md flex flex-col items-center justify-center text-white text-lg font-semibold cursor-pointer transition hover:bg-white hover:text-black hover:shadow-[0_0_20px_10px_rgba(255,255,255,0.2)]`}
                         onClick={() => handleRectangleClick(rect.page)}
                     >
-                        <div className="text-3xl mb-2">{rect.icon}</div>
-                        <span>{rect.label}</span>
+                        <div className="text-7xl mb-4">{rect.icon}</div> {/* Increased icon size */}
+                        <span className="text-l">{rect.label}</span> {/* Increased label size */}
                     </div>
                 ))}
             </div>
