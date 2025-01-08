@@ -4,31 +4,36 @@ import {useEffect, useState} from 'react';
 import AdminForm from '@/components/adminForm';
 import {fetchAll, saveRecord, deleteRecord, uploadFile} from '@/services/adminService';
 
-interface CommitteeMembers {
+interface NewsItem {
     id: string;
-    name: string;
-    role: string;
+    title: string;
+    description: string;
     imageSrc: string;
 }
 
-const AdminCommitteeMembersPage = () => {
-    const [committeeMembers, setCommitteeMembers] = useState<CommitteeMembers[]>([]);
+const NewsPage = () => {
+    const [newsItems, setNewsItems] = useState<NewsItem[]>([]);
+    const [formData, setFormData] = useState({
+        id: '',
+        title: '',
+        description: '',
+        imageSrc: '',
+    });
     const [loading, setLoading] = useState(true);
-    const [formData, setFormData] = useState({id: '', name: '', role: '', imageSrc: ''});
 
     useEffect(() => {
-        const loadCommitteeMembers = async () => {
+        const loadNewsItems = async () => {
             setLoading(true);
             try {
-                const data = await fetchAll('committee_members');
-                setCommitteeMembers(data);
+                const data = await fetchAll('news');
+                setNewsItems(data);
             } catch (error) {
-                console.error('Error loading committee members:', error);
+                console.error('Error fetching news:', error);
             } finally {
                 setLoading(false);
             }
         };
-        loadCommitteeMembers();
+        loadNewsItems();
     }, []);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -40,7 +45,7 @@ const AdminCommitteeMembersPage = () => {
         const file = files[0];
 
         try {
-            const path = await uploadFile(file, '/api/committee_images_upload');
+            const path = await uploadFile(file, '/api/news_images_upload');
             setFormData({...formData, imageSrc: path});
         } catch (error) {
             console.error('Error uploading file:', error);
@@ -50,50 +55,45 @@ const AdminCommitteeMembersPage = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            await saveRecord('committee_members', formData);
-            const data = await fetchAll('committee_members');
-            setCommitteeMembers(data);
-
-            // Reset form
-            setFormData({id: '', name: '', role: '', imageSrc: ''});
+            await saveRecord('news', formData);
+            const data = await fetchAll('news');
+            setNewsItems(data);
+            setFormData({id: '', title: '', description: '', imageSrc: ''});
         } catch (error) {
-            console.error('Error saving committee member:', error);
+            console.error('Error saving news item:', error);
         }
     };
 
-
     const handleDelete = async (id: string, imagePath: string) => {
         try {
-            await deleteRecord('committee_members', id, imagePath);
-            const data = await fetchAll('committee_members');
-            setCommitteeMembers(data);
+            await deleteRecord('news', id, imagePath);
+            const data = await fetchAll('news');
+            setNewsItems(data);
         } catch (error) {
-            console.error('Error deleting committee member:', error);
+            console.error('Error deleting news item:', error);
         }
     };
 
     if (loading) return <div>Loading...</div>;
 
     return (
-        <div className="p-6">
-            <h1 className="text-2xl font-bold mb-6">Committee Members Page</h1>
-
+        <div className=" min-h-screen ">
+            <h1 className="text-4xl font-semibold text-center py-8">News</h1>
             <AdminForm
                 fields={[
-                    {label: '', name: 'id', type: 'hidden', value: formData.id, onChange: handleChange},
                     {
-                        label: 'Name',
-                        name: 'name',
+                        label: 'Title',
+                        name: 'title',
                         type: 'text',
-                        value: formData.name,
+                        value: formData.title,
                         onChange: handleChange,
                         required: true,
                     },
                     {
-                        label: 'Role',
-                        name: 'role',
+                        label: 'Description',
+                        name: 'description',
                         type: 'text',
-                        value: formData.role,
+                        value: formData.description,
                         onChange: handleChange,
                         required: true,
                     },
@@ -106,33 +106,33 @@ const AdminCommitteeMembersPage = () => {
                     },
                 ]}
                 onSubmit={handleSubmit}
-                buttonText={formData.id ? 'Update Member' : 'Add Member'}
+                buttonText={formData.id ? 'Update News' : 'Add News'}
             />
 
-            <div className="grid grid-cols-1 gap-6 mt-6">
-                {committeeMembers.map((member) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8 px-6">
+                {newsItems.map((newsItem) => (
                     <div
-                        key={member.id}
-                        className="border p-4 rounded-md shadow-md flex justify-between items-center"
+                        key={newsItem.id}
+                        className="bg-gray-800 rounded-lg overflow-hidden shadow-lg text-center"
                     >
-                        <div>
-                            <h3 className="font-bold">{member.name}</h3>
-                            <p>{member.role}</p>
-                            <img
-                                src={member.imageSrc}
-                                alt={member.name}
-                                className="w-16 h-16 mt-2 rounded-full object-cover"
-                            />
+                        <img
+                            src={newsItem.imageSrc}
+                            alt={newsItem.title}
+                            className="w-full h-56 object-cover"
+                        />
+                        <div className="p-4">
+                            <h3 className="text-xl font-bold">{newsItem.title}</h3>
+                            <p className="mt-2">{newsItem.description}</p>
                         </div>
-                        <div>
+                        <div className="flex justify-end p-4">
                             <button
-                                onClick={() => setFormData(member)}
+                                onClick={() => setFormData(newsItem)}
                                 className="bg-yellow-500 text-white px-4 py-2 rounded-md mr-2 hover:bg-yellow-600"
                             >
                                 Edit
                             </button>
                             <button
-                                onClick={() => handleDelete(member.id, member.imageSrc)}
+                                onClick={() => handleDelete(newsItem.id, newsItem.imageSrc)}
                                 className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600"
                             >
                                 Delete
@@ -145,4 +145,4 @@ const AdminCommitteeMembersPage = () => {
     );
 };
 
-export default AdminCommitteeMembersPage;
+export default NewsPage;
