@@ -44,7 +44,7 @@ const AdminAnnouncementsPage = () => {
         const file = files[0];
 
         try {
-            const path = await uploadFile(file, '/api/announcement_images_upload');
+            const path = await uploadFile(file, '/api/upload_image', 'announcements');
             setFormData({...formData, imageSrc: path});
         } catch (error) {
             console.error('Error uploading file:', error);

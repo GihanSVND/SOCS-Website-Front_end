@@ -40,7 +40,7 @@ const AdminCommitteeMembersPage = () => {
         const file = files[0];
 
         try {
-            const path = await uploadFile(file, '/api/committee_images_upload');
+            const path = await uploadFile(file, '/api/upload_image', 'committee_members');
             setFormData({...formData, imageSrc: path});
         } catch (error) {
             console.error('Error uploading file:', error);

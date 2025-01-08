@@ -40,7 +40,8 @@ const AdminEventsPage = () => {
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({...formData, [e.target.name]: e.target.value});
-    };
+    };                setFormData({...formData, mainImage: path});
+
 
     const handleFileUpload = async (files: FileList | null, type: string, index?: number) => {
         if (!files || files.length === 0) return;
@@ -49,7 +50,6 @@ const AdminEventsPage = () => {
         try {
             const path = await uploadFile(file, `/api/events_images_upload`);
             if (type === 'main') {
-                setFormData({...formData, mainImage: path});
             } else if (index !== undefined) {
                 const updatedImages = [...formData.additionalImages];
                 updatedImages[index] = path;
