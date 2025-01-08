@@ -64,9 +64,9 @@ const NewsPage = () => {
         }
     };
 
-    const handleDelete = async (id: string) => {
+    const handleDelete = async (id: string, imagePath: string) => {
         try {
-            await deleteRecord('news', id);
+            await deleteRecord('news', id, imagePath);
             const data = await fetchAll('news');
             setNewsItems(data);
         } catch (error) {
@@ -132,7 +132,7 @@ const NewsPage = () => {
                                 Edit
                             </button>
                             <button
-                                onClick={() => handleDelete(newsItem.id!)}
+                                onClick={() => handleDelete(newsItem.id, newsItem.imageSrc)}
                                 className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600"
                             >
                                 Delete

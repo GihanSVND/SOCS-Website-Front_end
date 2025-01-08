@@ -1,8 +1,12 @@
 'use client';
 
-import {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import AdminForm from '@/components/adminForm';
 import {fetchAll, saveRecord, deleteRecord, uploadFile} from '@/services/adminService';
+import {Poppins} from "next/font/google";
+
+const poppins4 = Poppins({weight: "400", subsets: ["latin"]});
+const poppins2 = Poppins({weight: "300", subsets: ["latin"]});
 
 interface Announcement {
     id: string;
@@ -59,9 +63,9 @@ const AdminAnnouncementsPage = () => {
         }
     };
 
-    const handleDelete = async (id: string) => {
+    const handleDelete = async (id: string, imagePath: string) => {
         try {
-            await deleteRecord('announcements', id);
+            await deleteRecord('announcements', id, imagePath);
             const data = await fetchAll('announcements');
             setAnnouncements(data);
         } catch (error) {
@@ -72,38 +76,43 @@ const AdminAnnouncementsPage = () => {
     if (loading) return <div>Loading...</div>;
 
     return (
-        <div className="p-6">
-            <h1 className="text-2xl font-bold mb-6">Announcements</h1>
+        <div className="p-[30px]">
+            <div className="flex flex-col py-[70px] justify-center items-center relative ">
+                <h1 className={`${poppins4.className} absolute text-[30px] sm:text-[40px] md:text-[60px] font-extrabold text-gray-300 `}>Announcements</h1>
+            </div>
 
-            <AdminForm
-                fields={[
-                    {
-                        label: 'Title',
-                        name: 'title',
-                        type: 'text',
-                        value: formData.title,
-                        onChange: handleChange,
-                        required: true,
-                    },
-                    {
-                        label: 'Description',
-                        name: 'description',
-                        type: 'text',
-                        value: formData.description,
-                        onChange: handleChange,
-                        required: true,
-                    },
-                    {
-                        label: 'Image',
-                        name: 'imageSrc',
-                        type: 'file',
-                        onChange: (e) => handleFileUpload(e.target.files),
-                        required: true,
-                    },
-                ]}
-                onSubmit={handleSubmit}
-                buttonText={formData.id ? 'Update Announcement' : 'Add Announcement'}
-            />
+            <div className={`${poppins2.className} px-[50px] sm:px-[100px] md:px-[150px]`}>
+                <AdminForm
+                    fields={[
+                        {
+                            label: 'Title',
+                            name: 'title',
+                            type: 'text',
+                            value: formData.title,
+                            onChange: handleChange,
+                            required: true,
+                        },
+                        {
+                            label: 'Description',
+                            name: 'description',
+                            type: 'text',
+                            value: formData.description,
+                            onChange: handleChange,
+                            required: true,
+                        },
+                        {
+                            label: 'Image',
+                            name: 'imageSrc',
+                            type: 'file',
+                            onChange: (e) => handleFileUpload(e.target.files),
+                            required: true,
+                        },
+                    ]}
+                    onSubmit={handleSubmit}
+                    buttonText={formData.id ? 'Update Announcement' : 'Add Announcement'}
+                />
+            </div>
+
 
             <div className="grid grid-cols-1 gap-6 mt-6">
                 {announcements.map((announcement) => (
@@ -134,7 +143,7 @@ const AdminAnnouncementsPage = () => {
                                 Edit
                             </button>
                             <button
-                                onClick={() => handleDelete(announcement.id!)}
+                                onClick={() => handleDelete(announcement.id, announcement.imageSrc)}
                                 className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600"
                             >
                                 Delete
@@ -148,3 +157,4 @@ const AdminAnnouncementsPage = () => {
 };
 
 export default AdminAnnouncementsPage;
+
