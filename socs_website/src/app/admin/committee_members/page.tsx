@@ -3,6 +3,8 @@
 import {useEffect, useState} from 'react';
 import AdminForm from '@/components/adminForm';
 import {fetchAll, saveRecord, deleteRecord, uploadFile} from '@/services/adminService';
+import Loading from "@/components/loading";
+import Alert from "@/components/alert";
 
 interface CommitteeMembers {
     id: string;
@@ -13,21 +15,28 @@ interface CommitteeMembers {
 
 const AdminCommitteeMembersPage = () => {
     const [committeeMembers, setCommitteeMembers] = useState<CommitteeMembers[]>([]);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({id: '', name: '', role: '', imageSrc: ''});
 
+    const [alert, setAlert] = useState<{ message: string; type: 'success' | 'error' | 'info' } | null>(null);
+
+    const showAlert = (message: string, type: 'success' | 'error' | 'info') => {
+        setAlert({message, type});
+    };
+
+    const loadCommitteeMembers = async () => {
+        setLoading(true);
+        try {
+            const data = await fetchAll('committee_members');
+            setCommitteeMembers(data);
+        } catch (error) {
+            console.error('Error loading committee members:', error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
     useEffect(() => {
-        const loadCommitteeMembers = async () => {
-            setLoading(true);
-            try {
-                const data = await fetchAll('committee_members');
-                setCommitteeMembers(data);
-            } catch (error) {
-                console.error('Error loading committee members:', error);
-            } finally {
-                setLoading(false);
-            }
-        };
         loadCommitteeMembers();
     }, []);
 
@@ -44,20 +53,25 @@ const AdminCommitteeMembersPage = () => {
             setFormData({...formData, imageSrc: path});
         } catch (error) {
             console.error('Error uploading file:', error);
+            showAlert('Failed to upload file.', 'error');
         }
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setLoading(true);
         try {
             await saveRecord('committee_members', formData);
             const data = await fetchAll('committee_members');
             setCommitteeMembers(data);
-
-            // Reset form
             setFormData({id: '', name: '', role: '', imageSrc: ''});
+            showAlert('Committee Members saved successfully!', 'success');
         } catch (error) {
             console.error('Error saving committee member:', error);
+            showAlert('Failed to save committee member.', 'error');
+        } finally {
+            setLoading(false);
+            loadCommitteeMembers(); // Refresh the page data
         }
     };
 
@@ -66,16 +80,22 @@ const AdminCommitteeMembersPage = () => {
         try {
             await deleteRecord('committee_members', id, imagePath);
             const data = await fetchAll('committee_members');
-            setCommitteeMembers(data);
+            setCommitteeMembers(data)
+            showAlert('committee member deleted successfully!', 'success');
         } catch (error) {
             console.error('Error deleting committee member:', error);
+            showAlert('Failed to delete committee member.', 'error');
+        } finally {
+            setLoading(false);
+            loadCommitteeMembers(); // Refresh the page data
         }
     };
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <Loading/>;
 
     return (
         <div className="p-6">
+            {alert && <Alert message={alert.message} type={alert.type} onClose={() => setAlert(null)}/>}
             <h1 className="text-2xl font-bold mb-6">Committee Members Page</h1>
 
             <AdminForm

@@ -3,6 +3,8 @@
 import {useEffect, useState} from 'react';
 import AdminForm from '@/components/adminForm';
 import {fetchAll, saveRecord, deleteRecord, uploadFile} from '@/services/adminService';
+import Alert from "@/components/alert";
+import Loading from "@/components/loading";
 
 interface Collaboration {
     id: string;
@@ -17,20 +19,27 @@ const CollaborationsPage = () => {
         description: '',
         imageSrc: '',
     });
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
+
+    const [alert, setAlert] = useState<{ message: string; type: 'success' | 'error' | 'info' } | null>(null);
+
+    const showAlert = (message: string, type: 'success' | 'error' | 'info') => {
+        setAlert({message, type});
+    };
+
+    const loadCollaborations = async () => {
+        setLoading(true);
+        try {
+            const data = await fetchAll('collaborations');
+            setCollaborations(data);
+        } catch (error) {
+            console.error('Error fetching collaborations:', error);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     useEffect(() => {
-        const loadCollaborations = async () => {
-            setLoading(true);
-            try {
-                const data = await fetchAll('collaborations');
-                setCollaborations(data);
-            } catch (error) {
-                console.error('Error fetching collaborations:', error);
-            } finally {
-                setLoading(false);
-            }
-        };
         loadCollaborations();
     }, []);
 
@@ -43,22 +52,29 @@ const CollaborationsPage = () => {
         const file = files[0];
 
         try {
-            const path = await uploadFile(file, '/api/upload_image','collaborations');
+            const path = await uploadFile(file, '/api/upload_image', 'collaborations');
             setFormData({...formData, imageSrc: path});
         } catch (error) {
             console.error('Error uploading file:', error);
+            showAlert('Failed to upload file.', 'error');
         }
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setLoading(true);
         try {
             await saveRecord('collaborations', formData);
             const data = await fetchAll('collaborations');
             setCollaborations(data);
             setFormData({id: '', description: '', imageSrc: ''});
+            showAlert('Collaboration saved successfully!', 'success');
         } catch (error) {
             console.error('Error saving collaboration:', error);
+            showAlert('Failed to save collaboration.', 'error');
+        } finally {
+            setLoading(false);
+            loadCollaborations(); // Refresh the page data
         }
     };
 
@@ -67,16 +83,21 @@ const CollaborationsPage = () => {
             await deleteRecord('collaborations', id, imagePath);
             const data = await fetchAll('collaborations');
             setCollaborations(data);
+            showAlert('Collaboration deleted successfully!', 'success');
         } catch (error) {
             console.error('Error deleting collaboration:', error);
+            showAlert('Failed to delete collaboration.', 'error');
+        } finally {
+            setLoading(false);
+            loadCollaborations(); // Refresh the page data
         }
     };
 
-
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <Loading />;
 
     return (
         <div className="p-6">
+            {alert && <Alert message={alert.message} type={alert.type} onClose={() => setAlert(null)}/>}
             <h1 className="text-2xl font-bold mb-6">Collaborations</h1>
 
             <AdminForm
@@ -123,7 +144,7 @@ const CollaborationsPage = () => {
                                 Edit
                             </button>
                             <button
-                                onClick={() => handleDelete(collaboration.id,collaboration.imageSrc)}
+                                onClick={() => handleDelete(collaboration.id, collaboration.imageSrc)}
                                 className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600"
                             >
                                 Delete
