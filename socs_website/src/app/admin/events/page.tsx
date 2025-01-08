@@ -2,7 +2,7 @@
 
 import React, {useEffect, useState} from 'react';
 import AdminForm from '@/components/adminForm';
-import {fetchAll, saveRecord, deleteRecord, uploadFile} from '@/services/adminService';
+import {fetchAll, saveRecord, deleteRecord, uploadFile, deleteEventImages} from '@/services/adminService';
 
 interface Event {
     id: string;
@@ -40,7 +40,7 @@ const AdminEventsPage = () => {
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({...formData, [e.target.name]: e.target.value});
-    };                setFormData({...formData, mainImage: path});
+    };
 
 
     const handleFileUpload = async (files: FileList | null, type: string, index?: number) => {
@@ -48,8 +48,9 @@ const AdminEventsPage = () => {
         const file = files[0];
 
         try {
-            const path = await uploadFile(file, `/api/events_images_upload`);
+            const path = await uploadFile(file, `/api/events_images_upload`, 'event');
             if (type === 'main') {
+                setFormData({...formData, mainImage: path});
             } else if (index !== undefined) {
                 const updatedImages = [...formData.additionalImages];
                 updatedImages[index] = path;
@@ -78,15 +79,25 @@ const AdminEventsPage = () => {
         }
     };
 
-    const handleDelete = async (id: string) => {
+    const handleDelete = async (event: Event) => {
         try {
-            await deleteRecord('events', id);
+            // Collect all image paths
+            const allImagePaths = [event.mainImage, ...event.additionalImages.filter(Boolean)];
+
+            // Delete all images
+            await deleteEventImages(allImagePaths);
+
+            // Delete the record from the database
+            await deleteRecord('events', event.id);
+
+            // Refresh the events list
             const data = await fetchAll('events');
             setEvents(data);
         } catch (error) {
-            console.error('Error deleting event:', error);
+            console.error('Error deleting event and its images:', error);
         }
     };
+
 
     if (loading) return <div>Loading...</div>;
 
@@ -146,7 +157,7 @@ const AdminEventsPage = () => {
                                 Edit
                             </button>
                             <button
-                                onClick={() => handleDelete(event.id!)}
+                                onClick={() => handleDelete(event)}
                                 className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600"
                             >
                                 Delete
