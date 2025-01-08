@@ -104,3 +104,27 @@ export async function uploadFile(file: File, apiEndpoint: string, uploadDir: str
     });
 }
 
+/**
+ * Deletes multiple images by their paths.
+ * @param imagePaths Array of image paths to delete.
+ */
+export async function deleteEventImages(imagePaths: string[]) {
+    try {
+        const response = await fetch('/api/delete_event_images', {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ imagePaths }),
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to delete some or all images');
+        }
+
+        return await response.json();
+    } catch (error) {
+        console.error('Error deleting images:', error);
+        throw error;
+    }
+}
+
+
