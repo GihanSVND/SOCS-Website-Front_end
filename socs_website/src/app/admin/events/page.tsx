@@ -2,7 +2,9 @@
 
 import React, {useEffect, useState} from 'react';
 import AdminForm from '@/components/adminForm';
-import {fetchAll, saveRecord, deleteRecord, uploadFile} from '@/services/adminService';
+import {fetchAll, saveRecord, deleteRecord, uploadFile, deleteEventImages} from '@/services/adminService';
+import Loading from "@/components/loading";
+import Alert from "@/components/alert";
 
 interface Event {
     id: string;
@@ -21,26 +23,33 @@ const AdminEventsPage = () => {
         mainImage: '',
         additionalImages: Array(9).fill(''),
     });
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
+
+    const [alert, setAlert] = useState<{ message: string; type: 'success' | 'error' | 'info' } | null>(null);
+
+    const showAlert = (message: string, type: 'success' | 'error' | 'info') => {
+        setAlert({message, type});
+    };
+
+    const loadEvents = async () => {
+        setLoading(true);
+        try {
+            const data = await fetchAll('events');
+            setEvents(data);
+        } catch (error) {
+            console.error('Error fetching events:', error);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     useEffect(() => {
-        const loadEvents = async () => {
-            setLoading(true);
-            try {
-                const data = await fetchAll('events');
-                setEvents(data);
-            } catch (error) {
-                console.error('Error fetching events:', error);
-            } finally {
-                setLoading(false);
-            }
-        };
         loadEvents();
     }, []);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({...formData, [e.target.name]: e.target.value});
-    };                setFormData({...formData, mainImage: path});
+    };
 
 
     const handleFileUpload = async (files: FileList | null, type: string, index?: number) => {
@@ -48,20 +57,23 @@ const AdminEventsPage = () => {
         const file = files[0];
 
         try {
-            const path = await uploadFile(file, `/api/events_images_upload`);
+            const path = await uploadFile(file, `/api/events_images_upload`, 'event');
             if (type === 'main') {
+                setFormData({...formData, mainImage: path});
             } else if (index !== undefined) {
                 const updatedImages = [...formData.additionalImages];
                 updatedImages[index] = path;
                 setFormData({...formData, additionalImages: updatedImages});
             }
         } catch (error) {
-            console.error('Error uploading file:', error);
+            console.error('Error uploading file:', error)
+            showAlert('Failed to upload file.', 'error');
         }
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setLoading(true);
         try {
             await saveRecord('events', formData);
             const data = await fetchAll('events');
@@ -73,25 +85,46 @@ const AdminEventsPage = () => {
                 mainImage: '',
                 additionalImages: Array(9).fill(''),
             });
+            showAlert('Event saved successfully!', 'success');
         } catch (error) {
             console.error('Error saving event:', error);
+            showAlert('Failed to save event.', 'error');
+        } finally {
+            setLoading(false);
+            loadEvents(); // Refresh the page data
         }
     };
 
-    const handleDelete = async (id: string) => {
+    const handleDelete = async (event: Event) => {
         try {
-            await deleteRecord('events', id);
+            // Collect all image paths
+            const allImagePaths = [event.mainImage, ...event.additionalImages.filter(Boolean)];
+
+            // Delete all images
+            await deleteEventImages(allImagePaths);
+
+            // Delete the record from the database
+            await deleteRecord('events', event.id);
+
+            // Refresh the events list
             const data = await fetchAll('events');
             setEvents(data);
+            showAlert('Event deleted successfully!', 'success');
         } catch (error) {
-            console.error('Error deleting event:', error);
+            console.error('Error deleting event and its images:', error);
+            showAlert('Failed to delete event.', 'error');
+        } finally {
+            setLoading(false);
+            loadEvents(); // Refresh the page data
         }
     };
 
-    if (loading) return <div>Loading...</div>;
+
+    if (loading) return <Loading/>;
 
     return (
         <div className="min-h-screen">
+            {alert && <Alert message={alert.message} type={alert.type} onClose={() => setAlert(null)}/>}
             <h1 className="text-4xl font-semibold text-center py-8">Admin: Events</h1>
             <AdminForm
                 fields={[
@@ -146,7 +179,7 @@ const AdminEventsPage = () => {
                                 Edit
                             </button>
                             <button
-                                onClick={() => handleDelete(event.id!)}
+                                onClick={() => handleDelete(event)}
                                 className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600"
                             >
                                 Delete

@@ -16,10 +16,3 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ message: 'Failed to upload file' }, { status: 500 });
     }
 }
-
-export async function GET() {
-    return NextResponse.json(
-        { message: 'Use POST to upload files' },
-        { status: 405 }
-    );
-}
