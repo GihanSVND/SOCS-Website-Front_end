@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 interface FormField {
     label: string;
     name: string;
@@ -18,7 +17,7 @@ interface ReusableFormProps {
 
 const AdminForm: React.FC<ReusableFormProps> = ({fields, onSubmit, buttonText}) => {
     return (
-        <form onSubmit={onSubmit} className="space-y-4 bg-[#191919] p-[40px] shadow-md rounded-[37px]">
+        <form onSubmit={onSubmit} className="space-y-4 bg-black p-[40px] shadow-md rounded-[37px]">
             {fields.map((field) => (
                 <div key={field.name} className="mb-4">
                     {field.type !== 'hidden' && (
