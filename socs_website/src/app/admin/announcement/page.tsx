@@ -4,6 +4,8 @@ import React, {useEffect, useState} from 'react';
 import AdminForm from '@/components/adminForm';
 import {fetchAll, saveRecord, deleteRecord, uploadFile} from '@/services/adminService';
 import {Poppins} from "next/font/google";
+import Loading from "@/components/loading";
+import Alert from "@/components/alert";
 
 const poppins4 = Poppins({weight: "400", subsets: ["latin"]});
 const poppins2 = Poppins({weight: "300", subsets: ["latin"]});
@@ -18,20 +20,26 @@ interface Announcement {
 const AdminAnnouncementsPage = () => {
     const [announcements, setAnnouncements] = useState<Announcement[]>([]);
     const [formData, setFormData] = useState({id: '', title: '', description: '', imageSrc: ''});
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
+    const [alert, setAlert] = useState<{ message: string; type: 'success' | 'error' | 'info' } | null>(null);
+
+    const showAlert = (message: string, type: 'success' | 'error' | 'info') => {
+        setAlert({message, type});
+    };
+
+    const loadAnnouncements = async () => {
+        setLoading(true);
+        try {
+            const data = await fetchAll('announcements');
+            setAnnouncements(data);
+        } catch (error) {
+            console.error('Error fetching announcements:', error);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     useEffect(() => {
-        const loadAnnouncements = async () => {
-            setLoading(true);
-            try {
-                const data = await fetchAll('announcements');
-                setAnnouncements(data);
-            } catch (error) {
-                console.error('Error fetching announcements:', error);
-            } finally {
-                setLoading(false);
-            }
-        };
         loadAnnouncements();
     }, []);
 
@@ -44,43 +52,53 @@ const AdminAnnouncementsPage = () => {
         const file = files[0];
 
         try {
-            const path = await uploadFile(file, '/api/announcement_images_upload');
+            const path = await uploadFile(file, '/api/upload_image', 'announcements');
             setFormData({...formData, imageSrc: path});
         } catch (error) {
             console.error('Error uploading file:', error);
+            showAlert('Failed to upload file.', 'error');
         }
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setLoading(true);
         try {
             await saveRecord('announcements', formData);
-            const data = await fetchAll('announcements');
-            setAnnouncements(data);
+            showAlert('Announcement saved successfully!', 'success');
             setFormData({id: '', title: '', description: '', imageSrc: ''});
+            showAlert('Announcement saved successfully!', 'success');
         } catch (error) {
             console.error('Error saving announcement:', error);
+            showAlert('Failed to save announcement.', 'error');
+        } finally {
+            setLoading(false);
+            loadAnnouncements(); // Refresh announcements
         }
     };
 
     const handleDelete = async (id: string, imagePath: string) => {
+        setLoading(true);
         try {
             await deleteRecord('announcements', id, imagePath);
-            const data = await fetchAll('announcements');
-            setAnnouncements(data);
+            showAlert('Announcement deleted successfully!', 'success');
         } catch (error) {
             console.error('Error deleting announcement:', error);
+            showAlert('Failed to delete announcement.', 'error');
+        } finally {
+            setLoading(false);
+            loadAnnouncements(); // Refresh announcements
         }
     };
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <Loading/>;
 
     return (
         <div className="p-[30px]">
+            {alert && <Alert message={alert.message} type={alert.type} onClose={() => setAlert(null)}/>}
             <div className="flex flex-col py-[70px] justify-center items-center relative ">
                 <h1 className={`${poppins4.className} absolute text-[30px] sm:text-[40px] md:text-[60px] font-extrabold text-gray-300 `}>Announcements</h1>
             </div>
-
             <div className={`${poppins2.className} px-[50px] sm:px-[100px] md:px-[150px]`}>
                 <AdminForm
                     fields={[

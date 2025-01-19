@@ -3,6 +3,8 @@
 import {useEffect, useState} from 'react';
 import AdminForm from '@/components/adminForm';
 import {fetchAll, saveRecord, deleteRecord, uploadFile} from '@/services/adminService';
+import Loading from "@/components/loading";
+import Alert from "@/components/alert";
 
 interface NewsItem {
     id: string;
@@ -19,20 +21,27 @@ const NewsPage = () => {
         description: '',
         imageSrc: '',
     });
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
+
+    const [alert, setAlert] = useState<{ message: string; type: 'success' | 'error' | 'info' } | null>(null);
+
+    const showAlert = (message: string, type: 'success' | 'error' | 'info') => {
+        setAlert({message, type});
+    };
+
+    const loadNewsItems = async () => {
+        setLoading(true);
+        try {
+            const data = await fetchAll('news');
+            setNewsItems(data);
+        } catch (error) {
+            console.error('Error fetching news:', error);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     useEffect(() => {
-        const loadNewsItems = async () => {
-            setLoading(true);
-            try {
-                const data = await fetchAll('news');
-                setNewsItems(data);
-            } catch (error) {
-                console.error('Error fetching news:', error);
-            } finally {
-                setLoading(false);
-            }
-        };
         loadNewsItems();
     }, []);
 
@@ -45,22 +54,29 @@ const NewsPage = () => {
         const file = files[0];
 
         try {
-            const path = await uploadFile(file, '/api/news_images_upload');
+            const path = await uploadFile(file, '/api/upload_image', 'news');
             setFormData({...formData, imageSrc: path});
         } catch (error) {
             console.error('Error uploading file:', error);
+            showAlert('Failed to upload file.', 'error');
         }
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setLoading(true);
         try {
             await saveRecord('news', formData);
             const data = await fetchAll('news');
             setNewsItems(data);
             setFormData({id: '', title: '', description: '', imageSrc: ''});
+            showAlert('News saved successfully!', 'success');
         } catch (error) {
             console.error('Error saving news item:', error);
+            showAlert('Failed to save news.', 'error');
+        } finally {
+            setLoading(false);
+            loadNewsItems(); // Refresh the page data
         }
     };
 
@@ -69,15 +85,21 @@ const NewsPage = () => {
             await deleteRecord('news', id, imagePath);
             const data = await fetchAll('news');
             setNewsItems(data);
+            showAlert('News deleted successfully!', 'success');
         } catch (error) {
             console.error('Error deleting news item:', error);
+            showAlert('Failed to delete news.', 'error');
+        } finally {
+            setLoading(false);
+            loadNewsItems(); // Refresh the page data
         }
     };
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <Loading/>;
 
     return (
         <div className=" min-h-screen ">
+            {alert && <Alert message={alert.message} type={alert.type} onClose={() => setAlert(null)}/>}
             <h1 className="text-4xl font-semibold text-center py-8">News</h1>
             <AdminForm
                 fields={[
