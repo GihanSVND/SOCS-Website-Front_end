@@ -15,7 +15,7 @@ const Navbar = () => {
         <div className="hidden md:flex w-full justify-center space-x-10 font-light text-lg">
           
         <a href="#" className="hover:text-gray-400">Let Me Hack</a>
-          <a href="#" className="hover:text-gray-400">FortNight</a>
+          <a href="/public/events/FortNight" className="hover:text-gray-400">FortNight</a>
           <a href="#" className="hover:text-gray-400">Virtual Rival</a>
           <a href="#" className="hover:text-gray-400">CodeNight</a>
           <a href="#" className="hover:text-gray-400">Connecting Dots</a>
@@ -49,7 +49,7 @@ const Navbar = () => {
       <div className={`md:hidden ${isOpen ? 'block' : 'hidden'}`}>
         <div className="px-4 py-2 space-y-2 bg-black text-left">
           <a href="#" className="block hover:text-gray-400">Let Me Hack</a>
-          <a href="#" className="block hover:text-gray-400">FortNight</a>
+          <a href="/public/events/FortNight" className="block hover:text-gray-400">FortNight</a>
           <a href="#" className="block hover:text-gray-400">Virtual Rival</a>
           <a href="#" className="block hover:text-gray-400">CodeNight</a>
           <a href="#" className="block hover:text-gray-400">Connecting Dots</a>
