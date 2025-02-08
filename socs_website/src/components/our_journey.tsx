@@ -16,7 +16,7 @@ const OurJourney: React.FC = () => {
                     <div className="w-full md:w-1/2 text-gray-300 text-lg">
                         <p className={`${poppins3.className} text-[17px] leading-[25.5px] py-10 ml-16 text-left`}>
                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                            been the industry's
+                            been the industrys
                             standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
                             scrambled it to make
                             a type specimen book. It has survived not only five centuries, but also the leap into
