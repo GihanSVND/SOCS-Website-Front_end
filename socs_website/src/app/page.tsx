@@ -1,4 +1,5 @@
 'use client'
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Navbar from "@/components/navbar";
 import Committee_member_gallery from "@/components/committee_member_gallery";
@@ -7,6 +8,15 @@ import AnnouncementsSection from "@/components/sections/announcementSection";
 import CollaborationsSection from "@/components/sections/CollaborationsSection";
 
 export default function Home() {
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            setIsLoaded(true);
+        }, 300); // 600ms delay before transition starts
+
+        return () => clearTimeout(timeout);
+    }, []);
 
     return (
         <div className="bg-black text-white">
@@ -20,7 +30,9 @@ export default function Home() {
                             alt="Robotic Head"
                             width={600}
                             height={500}
-                            className="z-0 opacity-90"
+                            className={`z-0 opacity-90 transform transition-transform duration-[1200ms] ${
+                                isLoaded ? "scale-[1.1]" : "scale-[0.8]"
+                            }`}
                         />
                     </div>
                     <div className="z-0 flex space-x-4">
@@ -29,7 +41,9 @@ export default function Home() {
                             alt="Robotic Head"
                             width={500}
                             height={500}
-                            className="z-0 opacity-90"
+                            className={`z-10 opacity-100 transform transition-transform duration-[1200ms] ${
+                                isLoaded ? "scale-[1.35]" : "scale-[1.6]"
+                            }`}
                         />
                         <div
                             className="absolute bottom-10 left-0 right-0 h-32 bg-gradient-to-t from-black/70 to-transparent blur-md"></div>
@@ -74,6 +88,6 @@ export default function Home() {
 
             <Footer></Footer>
         </div>
-
     );
 }
+
