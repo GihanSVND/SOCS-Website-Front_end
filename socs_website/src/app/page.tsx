@@ -41,13 +41,11 @@ export default function Home() {
                         Sabaragamuwa University of Sri Lanka
                     </p>
                     <p className="mt-10 mx-auto max-w-5xl p-5">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the standard dummy text ever since the 1500s, when an unknown printer took a galley
-                        of type and scrambled it to make a type specimen book. It has survived not only five centuries,
-                        but also the leap into electronic typesetting, remaining essentially unchanged. It was
-                        popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-                        and more recently with desktop publishing software like Aldus PageMaker including versions of
-                        Lorem Ipsum
+                    The Society of Computer Sciences - S0CS at Sabaragamuwa University of Sri Lanka is a leading student 
+                    organization within the university and the Faculty of Computing, dedicated to enhancing knowledge, 
+                    experience, and engagement in the field of computer science. The society actively organizes a variety
+                     of events, including workshops, hackathons, guest lectures, and networking sessions, providing students
+                      with hands-on learning opportunities and industry exposure.
                     </p>
                 </div>
             </section>
