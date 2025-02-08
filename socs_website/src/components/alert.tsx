@@ -21,21 +21,29 @@ const Alert: React.FC<AlertProps> = ({ message, type, onClose }) => {
 
     return (
         <div
-            className={`fixed top-4 right-4 z-50 p-4 rounded-lg shadow-md ${
+            className={`fixed top-4 right-4 z-50 p-6 rounded-[28px] shadow-lg ring-2 ring-white ring-opacity-50 bg-black text-white flex items-center space-x-4 ${
                 type === 'success'
-                    ? 'bg-green-500 text-white'
+                    ? 'border border-white shadow-[0_0_20px_10px_rgba(255,255,255,0.2)]'
                     : type === 'error'
-                        ? 'bg-red-500 text-white'
-                        : 'bg-blue-500 text-white'
+                    ? 'border border-red-400'
+                    : 'border border-blue-400'
             }`}
         >
-            <p>{message}</p>
+            {/* Logo Image */}
+            <img
+                src="/images/socs_logo.png"
+                alt="Logo"
+                className="w-8 h-8 animate-spin-slow"
+            />
+            {/* Message Text */}
+            <p className="text-[15px] font-medium">{message}</p>
+            {/* Close Button */}
             <button
                 onClick={() => {
                     setVisible(false);
                     onClose();
                 }}
-                className="absolute top-2 right-2 text-white hover:text-gray-300"
+                className="text-white hover:text-gray-300 ml-auto transform transition duration-200 hover:scale-110"
             >
                 &times;
             </button>

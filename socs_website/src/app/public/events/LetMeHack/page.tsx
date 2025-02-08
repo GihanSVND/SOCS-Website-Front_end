@@ -3,10 +3,16 @@ import Navbar from "@/components/navbar";
 import EventNavBar from "@/components/eventsNavBar";
 import ImageSlider from "@/components/cardSliderPage";
 import { Poppins } from "next/font/google";
+import Footer from "@/components/footer";
 
 const poppins3 = Poppins({ weight: "300", subsets: ["latin"] });
 
 export default function Home() {
+  const images1 = [
+    "/images/event1.png",
+    "/images/event2.png",
+    "/images/event3.png",
+  ];
   const images = [
     "/images/annoncmentcard.png",
     "/images/annoncmentcard.png",
@@ -40,7 +46,7 @@ export default function Home() {
           <div>
             <div className="col-span-2 col-start-1 row-start-2 hidden md:block">
               <div className="col-start-2 row-start-1">
-                <ImageSlider images={images} />
+                <ImageSlider images={images1} />
               </div>
             </div>
           </div>
@@ -102,6 +108,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

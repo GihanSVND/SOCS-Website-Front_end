@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 interface FormField {
     label: string;
     name: string;
@@ -18,7 +17,7 @@ interface ReusableFormProps {
 
 const AdminForm: React.FC<ReusableFormProps> = ({fields, onSubmit, buttonText}) => {
     return (
-        <form onSubmit={onSubmit} className="space-y-4 bg-[#191919] p-[40px] shadow-md rounded-[37px]">
+        <form onSubmit={onSubmit} className="space-y-4 bg-black p-[40px] shadow-md rounded-[37px]">
             {fields.map((field) => (
                 <div key={field.name} className="mb-4">
                     {field.type !== 'hidden' && (
@@ -28,7 +27,7 @@ const AdminForm: React.FC<ReusableFormProps> = ({fields, onSubmit, buttonText}) 
                         <div className="w-full">
                             <label
                                 htmlFor={field.name}
-                                className="block cursor-pointer border-2 border-dashed border-gray-400 rounded-[30px] p-6 text-center hover:border-white transition"
+                                className="block cursor-pointer border-2 border-dashed border-gray-400 rounded-[30px] p-6 text-center hover:border-white transition "
                             >
                                 <div id={`${field.name}-preview`} className="flex flex-col items-center space-y-2">
                                     <svg
@@ -89,7 +88,7 @@ const AdminForm: React.FC<ReusableFormProps> = ({fields, onSubmit, buttonText}) 
                             value={field.value as string}
                             onChange={field.onChange}
                             required={field.required}
-                            className="border rounded-[37px] p-3 w-full focus:outline-none bg-[#252525] transition focus:shadow-[0_0_15px_5px_rgba(255,255,255,0.4)]"
+                            className="border rounded-[37px] p-3 w-full focus:outline-none bg-[#252525] transition focus:shadow-[0_0_15px_5px_rgba(255,255,255,0.4)] "
                         />
                     )}
                 </div>
