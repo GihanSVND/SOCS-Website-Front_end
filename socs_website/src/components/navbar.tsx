@@ -1,104 +1,75 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import { useState } from 'react';
+import React, { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { Menu, X } from "lucide-react"; // Import icons from lucide-react
+
+const menuItems = [
+  { name: "Home", href: "/" },
+  { name: "About", href: "/public/about" },
+  { name: "News", href: "/public/news" },
+  { name: "Event", href: "/public/events/LetMeHack" },
+  { name: "Contact Us", href: "/public/contact_us" },
+];
 
 const Navbar = () => {
-    const [active, setActive] = useState('Home');
-    const [isMenuOpen, setIsMenuOpen] = useState(false); // State to toggle the side menu
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-    const menuItems = [
-        { name: 'Home', href: '/' },
-        { name: 'About', href: '/public/about' },
-        { name: 'News', href: '/public/news' },
-        { name: 'Event', href: '/public/events/LetMeHack' },
-        { name: 'Contact Us', href: '/public/contact_us' },
-    ];
+  return (
+    <nav className="bg-black text-white flex items-center justify-between px-6 py-4 relative">
 
-    const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
-    };
+      {/* Left Logo (Desktop) & Mobile Menu Button */}
+      <div className="absolute left-4 md:left-20 flex items-center">
+        {/* Hamburger Menu - Mobile Only */}
+        <button
+          className="md:hidden text-white focus:outline-none mt-4"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          {isMenuOpen ? <X size={30} /> : <Menu size={30} />}
+        </button>
 
-    return (
-        <nav className="bg-black text-white py-4 px-10 flex justify-between items-center relative">
-            {/* Hamburger Icon */}
-            {!isMenuOpen && ( // Show hamburger only when the side menu is closed
-                <div
-                    className="absolute top-4 left-4 md:hidden cursor-pointer z-50 mt-2"
-                    onClick={toggleMenu}
-                >
-                    <div className="w-6 h-0.5 bg-white mb-1"></div>
-                    <div className="w-6 h-0.5 bg-white mb-1"></div>
-                    <div className="w-6 h-0.5 bg-white"></div>
-                </div>
-            )}
+        {/* Desktop Logo - Hidden on Mobile */}
+        <div className="hidden md:block ml-4">
+          <Image src="/images/socs_logo.png" alt="Logo" width={40} height={40} />
+        </div>
+      </div>
 
-            {/* Left Logo (Hidden on smaller screens when menu is open) */}
-            {!isMenuOpen && (
-                <div className="hidden md:flex items-center ml-16 mt-4 md:ml-0">
-                    <Image src="/images/socs_logo.png" alt="Logo" width={40} height={40}/>
-                </div>
-            )}
+      {/* Navigation Links - Desktop */}
+      <div className="hidden md:flex flex-1 justify-center space-x-8 mt-4 text-[18px]">
+        {menuItems.map((item) => (
+          <Link key={item.name} href={item.href} className="hover:font-bold">
+            {item.name}
+          </Link>
+        ))}
+      </div>
 
-            {/* Right SOCS Logo (Always visible in the right corner) */}
-            <div className="absolute right-4 md:right-10 mt-4">
-                <Image src="/images/socs_logo_name.png" alt="SOCS Logo" width={80} height={30}/>
-            </div>
+      {/* Right SOCS Logo */}
+      <div className="absolute right-4 md:right-20 mt-4">
+        <Image
+          src="/images/socs_logo_name.png"
+          alt="SOCS Logo"
+          width={80}
+          height={30}
+        />
+      </div>
 
-            {/* Main Menu (Hidden in mobile view) */}
-            <div className="flex-grow flex justify-center mt-4">
-                <ul className="hidden md:flex space-x-8 text-lg ">
-                    {menuItems.map((item) => (
-                        <li key={item.name}>
-                            <Link legacyBehavior href={item.href}>
-                                <a
-                                    onClick={() => setActive(item.name)}
-                                    className={`${
-                                        active === item.name ? 'font-bold underline decoration-2' : ''
-                                    } hover:text-gray-400 transition duration-300`}
-                                >
-                                    {item.name}
-                                </a>
-                            </Link>
-                        </li>
-                    ))}
-                </ul>
+      {/* Mobile Navigation Menu */}
+      {isMenuOpen && (
+        <div className="absolute top-16 left-0 w-full bg-black text-white flex flex-col items-start justify-start py-6 space-y-4 md:hidden z-50">
+            {menuItems.map((item) => (
+            <Link
+                key={item.name}
+                href={item.href}
+                className="hover:font-bold text-lg ml-8"
+                onClick={() => setIsMenuOpen(false)} // Close menu on click
+            >
+                {item.name}
+            </Link>
+            ))}
+        </div>
+        )}
 
-                {/* Side Menu */}
-                <div
-                    className={`fixed top-0 left-0 h-full bg-black text-white p-5 transition-transform ${
-                        isMenuOpen ? 'translate-x-0' : '-translate-x-full'
-                    } md:hidden`}
-                    style={{width: '130px'}}
-                >
-                    <button
-                        className="text-white text-lg absolute top-4 right-4"
-                        onClick={toggleMenu}
-                    >
-                        &#x2715; {/* Close icon */}
-                    </button>
-                    <ul className="space-y-4 mt-8">
-                        {menuItems.map((item) => (
-                            <li key={item.name}>
-                                <Link legacyBehavior href={item.href}>
-                                    <a
-                                        onClick={() => {
-                                            setActive(item.name);
-                                            toggleMenu(); // Close menu on link click
-                                        }}
-                                        className={`block ${
-                                            active === item.name ? 'font-bold underline decoration-2' : ''
-                                        } hover:text-gray-400 transition duration-300`}
-                                    >
-                                        {item.name}
-                                    </a>
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            </div>
-        </nav>
-);
+    </nav>
+  );
 };
 
 export default Navbar;
