@@ -16,7 +16,7 @@ const AnnouncementsCardComponent: React.FC<AnnouncementsCardProps> = ({ title, d
                     alt={title}
                     width={500}
                     height={400}
-                    className="w-full h-56 object-cover"
+                    className="w-full h-56  object-cover"
                 />
                 {/* Top Right Badge */}
                 <div className="absolute top-2 right-2 bg-gray-900 text-white text-sm px-3 py-1 rounded-full shadow-md">
