@@ -1,27 +1,4 @@
-![SOCS Website Banner](https://via.placeholder.com/1200x400?text=SOCS+Website+Project) 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
-## 🌟 Introduction
-
-The SOCS website will be a modern web application designed to replace the existing reliance on social media and traditional communication methods. It will centralize resources, facilitate event management, and foster community interaction.
-
-Key Features:  
-- Centralized event management and communication  
-- Interactive forums and discussion boards  
-- Real-time updates and notifications  
-- Fully responsive design for mobile and desktop users  
-
----
-
-## 🎯 Objectives
-
-- Develop a user-friendly website with easy access to resources and services for SOCS members.  
-- Provide real-time updates on events and activities.  
-- Create interactive features such as forums, newsletters, and event calendars.  
-- Ensure a fully responsive and accessible design for all devices.  
-- Integrate analytics tools for monitoring user engagement and site performance.
-
----
 
 ## Getting Started
 
