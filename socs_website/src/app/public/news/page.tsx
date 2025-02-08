@@ -4,6 +4,7 @@ import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import {useEffect, useState} from "react";
 import {supabase} from "@/services/supabaseClient";
+import {Poppins} from "next/font/google";
 
 interface NewsItem {
     id: string;
@@ -11,6 +12,8 @@ interface NewsItem {
     description: string;
     imageSrc: string;
 }
+
+const poppins3 = Poppins({ weight: "300", subsets: ["latin"] });
 
 export default function News() {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -21,7 +24,7 @@ export default function News() {
     useEffect(() => {
         const fetchNews = async () => {
             try {
-                const { data, error } = await supabase.from('news').select('*'); // Assuming table name is 'news'
+                const {data, error} = await supabase.from('news').select('*'); // Assuming table name is 'news'
 
                 if (error) throw error;
 
@@ -117,7 +120,8 @@ export default function News() {
                             >
                                 <div
                                     className="absolute inset-0 bg-gradient-to-t from-transparent to-black opacity-30 rounded-b-lg md:rounded-r-lg md:rounded-bl-none"></div>
-                                <span className="text-white text-xl md:text-2xl relative z-10">
+                                <span
+                                    className={`${poppins3.className} text-white text-lg md:text-xl lg:text-2xl font-semibold tracking-wide leading-relaxed drop-shadow-md z-10`}>
                                     {newsItems[currentIndex]?.description}
                                 </span>
                             </div>

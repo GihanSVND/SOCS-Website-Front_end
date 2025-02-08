@@ -96,7 +96,7 @@ const PioneersGallery = () => {
                                 <div className="w-32 h-32 mx-auto mb-4 relative">
                                     <Image
                                         src={member.imageSrc}
-                                        alt={member.name}
+                                        alt= " "
                                         width={128}
                                         height={128}
                                         className="rounded-full border-4 border-white object-cover"
@@ -116,7 +116,7 @@ const PioneersGallery = () => {
                             <div className="w-32 h-32 mx-auto mb-4 relative">
                                 <Image
                                     src={member.imageSrc}
-                                    alt={member.name}
+                                    alt=" "
                                     width={128}
                                     height={128}
                                     className="rounded-full border-4 border-white object-cover"
