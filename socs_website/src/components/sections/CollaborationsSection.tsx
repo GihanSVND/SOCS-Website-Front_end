@@ -3,6 +3,10 @@
 import {useEffect, useState} from 'react';
 import CollaborationCard from '@/components/cards/CollaborationCard';
 import {fetchAll} from '@/services/adminService';
+import { Poppins } from "next/font/google";
+
+const poppins5 = Poppins({ weight: "500", subsets: ["latin"] });
+const poppins4 = Poppins({ weight: "400", subsets: ["latin"] });
 
 interface Collaboration {
     id: string;
@@ -31,8 +35,8 @@ const CollaborationsSection = () => {
 
     return (
         <section className="text-center py-16 bg-black">
-            <h2 className="text-4xl font-semibold mb-4 text-white">COLLABORATIONS</h2>
-            <p className="mt-10 mx-auto max-w-5xl p-5 text-white">
+            <h2 className={`${poppins5.className} text-5xl pt-10 font-semibold mb-4 text-white`}>COLLABORATIONS</h2>
+            <p className={`${poppins4.className} mt-10 mx-auto max-w-5xl text-white`}>
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
                 standard dummy text ever since the 1500s, when an unknown printer took a galley of type
                 and scrambled it to make a type specimen book. It has survived not only five centuries, but also the
