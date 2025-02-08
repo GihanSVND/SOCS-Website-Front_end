@@ -1,4 +1,5 @@
 'use client'
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Navbar from "@/components/navbar";
 import Committee_member_gallery from "@/components/committee_member_gallery";
@@ -7,6 +8,15 @@ import AnnouncementsSection from "@/components/sections/announcementSection";
 import CollaborationsSection from "@/components/sections/CollaborationsSection";
 
 export default function Home() {
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            setIsLoaded(true);
+        }, 300); // 600ms delay before transition starts
+
+        return () => clearTimeout(timeout);
+    }, []);
 
     return (
         <div className="bg-black text-white">
@@ -20,7 +30,9 @@ export default function Home() {
                             alt="Robotic Head"
                             width={600}
                             height={500}
-                            className="z-0 opacity-90"
+                            className={`z-0 opacity-90 transform transition-transform duration-[1200ms] ${
+                                isLoaded ? "scale-[1.1]" : "scale-[0.8]"
+                            }`}
                         />
                     </div>
                     <div className="z-0 flex space-x-4">
@@ -29,7 +41,9 @@ export default function Home() {
                             alt="Robotic Head"
                             width={500}
                             height={500}
-                            className="z-0 opacity-90"
+                            className={`z-10 opacity-100 transform transition-transform duration-[1200ms] ${
+                                isLoaded ? "scale-[1.35]" : "scale-[1.6]"
+                            }`}
                         />
                         <div
                             className="absolute bottom-10 left-0 right-0 h-32 bg-gradient-to-t from-black/70 to-transparent blur-md"></div>
@@ -41,13 +55,11 @@ export default function Home() {
                         Sabaragamuwa University of Sri Lanka
                     </p>
                     <p className="mt-10 mx-auto max-w-5xl p-5">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the standard dummy text ever since the 1500s, when an unknown printer took a galley
-                        of type and scrambled it to make a type specimen book. It has survived not only five centuries,
-                        but also the leap into electronic typesetting, remaining essentially unchanged. It was
-                        popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-                        and more recently with desktop publishing software like Aldus PageMaker including versions of
-                        Lorem Ipsum
+                    The Society of Computer Sciences - S0CS at Sabaragamuwa University of Sri Lanka is a leading student 
+                    organization within the university and the Faculty of Computing, dedicated to enhancing knowledge, 
+                    experience, and engagement in the field of computer science. The society actively organizes a variety
+                     of events, including workshops, hackathons, guest lectures, and networking sessions, providing students
+                      with hands-on learning opportunities and industry exposure.
                     </p>
                 </div>
             </section>
@@ -76,6 +88,6 @@ export default function Home() {
 
             <Footer></Footer>
         </div>
-
     );
 }
+
