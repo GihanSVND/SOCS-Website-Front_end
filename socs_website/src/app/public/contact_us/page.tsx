@@ -26,6 +26,10 @@ export default function ContactUs() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
+  const [alert, setAlert] = useState<{
+    message: string;
+    type: "success" | "error";
+  } | null>(null); // State to manage success/error alert
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -49,13 +53,16 @@ export default function ContactUs() {
       });
 
       const result = await res.json();
+
       if (res.ok) {
-        router.push("#"); // Redirect to a Thank You page or show success message
+        setAlert({ message: "Your message has been sent successfully!", type: "success" });
+        setTimeout(() => router.push("/"), 2000); // Redirect after 2 seconds
       } else {
-        console.error("Error:", result.message);
+        setAlert({ message: result.message || "Something went wrong.", type: "error" });
       }
     } catch (error) {
       console.error("Error:", error);
+      setAlert({ message: "Error sending message.", type: "error" });
     } finally {
       setIsSubmitting(false);
     }
@@ -73,6 +80,18 @@ export default function ContactUs() {
   return (
       <div className="bg-black min-h-screen">
         <Navbar />
+
+        {/* Alert Message */}
+        {alert && (
+            <div
+                className={`fixed top-5 left-1/2 transform -translate-x-1/2 px-6 py-3 rounded-md text-white ${
+                    alert.type === "success" ? "bg-green-500" : "bg-red-500"
+                }`}
+            >
+              {alert.message}
+            </div>
+        )}
+
         <section className="flex flex-col lg:flex-row justify-between items-start mt-10 px-4 md:px-10 lg:px-20 relative">
           <div className="text-left lg:ml-32 w-full lg:w-1/2">
             <h1 className="text-white text-5xl lg:text-7xl mb-10 lg:mb-20">CONTACT US</h1>
@@ -154,7 +173,7 @@ export default function ContactUs() {
                           type="radio"
                           name="category"
                           value={category}
-                          checked={formData.category === category}
+                          checked={formData.category === category} // Ensure the radio is checked if the value matches
                           onChange={handleChange}
                           className="appearance-none w-4 h-4 border-2 border-gray-500 rounded-md bg-black focus:outline-none relative"
                       />
