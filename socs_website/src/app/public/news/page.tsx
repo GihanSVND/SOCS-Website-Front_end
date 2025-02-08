@@ -3,6 +3,7 @@
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import {useEffect, useState} from "react";
+import {supabase} from "@/services/supabaseClient";
 
 interface NewsItem {
     id: string;
@@ -20,9 +21,11 @@ export default function News() {
     useEffect(() => {
         const fetchNews = async () => {
             try {
-                const response = await fetch('/api/news');
-                const data = await response.json();
-                setNewsItems(data);
+                const { data, error } = await supabase.from('news').select('*'); // Assuming table name is 'news'
+
+                if (error) throw error;
+
+                setNewsItems(data || []);
             } catch (error) {
                 console.error("Error fetching news data:", error);
             }
