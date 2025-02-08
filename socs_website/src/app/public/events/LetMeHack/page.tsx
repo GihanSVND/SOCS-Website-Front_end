@@ -9,14 +9,49 @@ const poppins3 = Poppins({ weight: "300", subsets: ["latin"] });
 
 export default function Home() {
   const images1 = [
-    "/images/event1.png",
-    "/images/event2.png",
-    "/images/event3.png",
+    "/events/LetMeHack/1.png",
+    "/events/LetMeHack/2.png",
+    "/events/LetMeHack/3.png",
   ];
-  const images = [
-    "/images/annoncmentcard.png",
-    "/images/annoncmentcard.png",
-    "/images/annoncmentcard.png",
+  const images2 = [
+    "/events/LetMeHack/4.png",
+    "/events/LetMeHack/5.png",
+    "/events/LetMeHack/6.png",
+  ];
+  const images3 = [
+    "/events/LetMeHack/7.png",
+    "/events/LetMeHack/8.png",
+    "/events/LetMeHack/9.png",
+  ];
+  const images4 = [
+    "/events/LetMeHack/10.png",
+    "/events/LetMeHack/11.png",
+    "/events/LetMeHack/12.png",
+  ];
+  const images5 = [
+    "/events/LetMeHack/13.png",
+    "/events/LetMeHack/14.png",
+    "/events/LetMeHack/15.png",
+  ];
+  const images6 = [
+    "/events/LetMeHack/16.png",
+    "/events/LetMeHack/17.png",
+    "/events/LetMeHack/18.png",
+  ];
+  const images7 = [
+    "/events/LetMeHack/19.png",
+    "/events/LetMeHack/20.png",
+    "/events/LetMeHack/21.png",
+  ];
+  const images8 = [
+    "/events/LetMeHack/22.png",
+    "/events/LetMeHack/23.png",
+    "/events/LetMeHack/24.png",
+  ];
+  const images9 = [
+    "/events/LetMeHack/25.png",
+    "/events/LetMeHack/26.png",
+    "/events/LetMeHack/27.png",
   ];
 
   return (
@@ -53,56 +88,56 @@ export default function Home() {
           <div>
             <div className="col-span-2 col-start-1 row-start-2 hidden sm:block">
               <div className="col-start-2 row-start-1">
-                <ImageSlider images={images} />
+                <ImageSlider images={images2} />
               </div>
             </div>
           </div>
           <div className="col-start-1 row-start-2 hidden md:block">
             <div className="col-span-2 col-start-1 row-start-2">
               <div className="col-start-2 row-start-1">
-                <ImageSlider images={images} />
+                <ImageSlider images={images3} />
               </div>
             </div>
           </div>
           <div className="col-start-2 row-start-2 hidden sm:block">
             <div className="col-span-2 col-start-1 row-start-2">
               <div className="col-start-2 row-start-1">
-                <ImageSlider images={images} />
+                <ImageSlider images={images4} />
               </div>
             </div>
           </div>
           <div className="col-span-6 sm:col-span-2 row-span-2 cols-start-2 sm:col-start-3 row-start-1 p-10 sm:p-0">
             <div className="col-span-2 col-start-1 row-start-2">
               <div className="col-start-2 row-start-1">
-                <ImageSlider images={images} />
+                <ImageSlider images={images5} />
               </div>
             </div>
           </div>
           <div className="col-start-5 row-start-1 hidden sm:block">
             <div className="col-span-2 col-start-1 row-start-2">
               <div className="col-start-2 row-start-1">
-                <ImageSlider images={images} />
+                <ImageSlider images={images6} />
               </div>
             </div>
           </div>
           <div className="col-start-6 row-start-1 hidden md:block">
             <div className="col-span-2 col-start-1 row-start-2">
               <div className="col-start-2 row-start-1">
-                <ImageSlider images={images} />
+                <ImageSlider images={images7} />
               </div>
             </div>
           </div>
           <div className="col-start-5 row-start-2 hidden sm:block">
             <div className="col-span-2 col-start-1 row-start-2">
               <div className="col-start-2 row-start-1">
-                <ImageSlider images={images} />
+                <ImageSlider images={images8} />
               </div>
             </div>
           </div>
           <div className="col-start-6 row-start-2 hidden md:block">
             <div className="col-span-2 col-start-1 row-start-2">
               <div className="col-start-2 row-start-1">
-                <ImageSlider images={images} />
+                <ImageSlider images={images9} />
               </div>
             </div>
           </div>
