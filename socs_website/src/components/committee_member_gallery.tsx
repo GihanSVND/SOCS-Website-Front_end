@@ -3,6 +3,10 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { supabase } from '@/services/supabaseClient';
+import { Poppins } from "next/font/google";
+
+const poppins4 = Poppins({ weight: "400", subsets: ["latin"] });
+const poppins5 = Poppins({ weight: "500", subsets: ["latin"] });
 
 abstract class CommitteeMember {
     abstract name: string;
@@ -41,7 +45,7 @@ const CommitteeMemberGallery = () => {
     }
 
     return (
-        <section className="py-7 bg-black text-white">
+        <section className=" bg-black text-white">
             {/* Grid Layout */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-14 max-w-4xl mx-auto">
                 {teamMembers.slice(0, 4).map((member, index) => (
@@ -74,8 +78,8 @@ const CommitteeMemberGallery = () => {
                                 className="rounded-full border-white"
                             />
                         </div>
-                        <h3 className="font-bold text-lg">{member.role}</h3>
-                        <p className="text-sm text-gray-300">{member.name}</p>
+                        <h3 className={`${poppins5.className} font-bold text-lg`}>{member.role}</h3>
+                        <p className={`${poppins4.className} text-sm text-gray-300`}>{member.name}</p>
                     </div>
                 ))}
             </div>
