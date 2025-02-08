@@ -76,10 +76,15 @@ export default function ContactUs() {
                   Contact Number
                 </label>
                 <input
-                    type="tel"
-                    id="contactNumber"
-                    className="w-full bg-transparent border-b border-gray-500 focus:outline-none text-white"
-                    placeholder=" "
+                  type="text" // Using "text" for better control
+                  id="contactNumber"
+                  maxLength={10} // Limit to 10 digits
+                  className="w-full bg-transparent border-b border-gray-500 focus:outline-none text-white"
+                  onInput={(e) => {
+                    const input = e.target as HTMLInputElement; // Cast to HTMLInputElement
+                    input.value = input.value.replace(/[^0-9]/g, ""); // Allow only numeric characters
+                  }}
+                  required
                 />
               </div>
 
@@ -188,12 +193,12 @@ export default function ContactUs() {
             <img
                 src="/images/contact%20us.png"
                 alt="Contact Us"
-                className="w-full h-auto"
+                className="hidden lg:block w-full h-auto"
             />
             <img
                 src="/images/Contct_Us%20DarkImage.png"
                 alt="New Image"
-                className={`absolute top-6 left-4 transition-opacity duration-5000 ${
+                className={`absolute top-6 left-4 transition-opacity duration-5000 hidden lg:block ${
                     fadeOut ? "opacity-0 translate-x-[100%]" : "opacity-100"
                 }`}
                 style={{
@@ -213,42 +218,31 @@ export default function ContactUs() {
             <h2 className="text-white text-4xl font-bold">SOCIAL FIGURES</h2>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-8 mb-16">
-            <a href="#" className="text-white hover:text-gray-500">
-              <FontAwesomeIcon icon={faFacebookSquare} size="2x" />
-              <p className="mt-2 text-sm">Society of Computer Sciences - SUSL</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 place-items-center mb-16 text-white">
+            <a href="#" className="hover:text-gray-500 flex items-center space-x-2">
+              <FontAwesomeIcon icon={faFacebookSquare} style={{ fontSize: '38px' }} />
+              <p className="text-[15px]">Society of Computer Sciences - SUSL</p>
             </a>
-            <a href="#" className="text-white hover:text-gray-500">
-              <FontAwesomeIcon icon={faInstagram} size="2x" />
-              <p className="mt-2 text-sm">Society of Computer Sciences - SUSL</p>
+            <a href="#" className="hover:text-gray-500 flex items-center space-x-2">
+              <FontAwesomeIcon icon={faInstagram} style={{ fontSize: '38px' }} />
+              <p className="text-[15px]">Society of Computer Sciences - SUSL</p>
             </a>
-            <a href="#" className="text-white hover:text-gray-500">
-              <FontAwesomeIcon icon={faLinkedin} size="2x" />
-              <p className="mt-2 text-sm">Society of Computer Sciences - SUSL</p>
+            <a href="#" className="hover:text-gray-500 flex items-center space-x-2">
+              <FontAwesomeIcon icon={faLinkedin} style={{ fontSize: '38px' }} />
+              <p className="text-[15px]">Society of Computer Sciences - SUSL</p>
             </a>
-            <a
-                href="mailto:socs@appsc.sab.ac.lk"
-                className="text-white hover:text-gray-500"
-            >
-              <FontAwesomeIcon icon={faEnvelope} size="2x" />
-              <p className="mt-2 text-sm">socs@appsc.sab.ac.lk</p>
+            <a href="mailto:socs@appsc.sab.ac.lk" className="hover:text-gray-500 flex items-center space-x-2 mr-24">
+              <FontAwesomeIcon icon={faEnvelope} style={{ fontSize: '38px' }} />
+              <p className="text-[15px]">socs@appsc.sab.ac.lk</p>
             </a>
-          </div>
-
-          <div className="flex flex-wrap justify-center text-center">
-            <a
-                href="#"
-                className="text-white hover:text-gray-500"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-              <div className="flex flex-col items-center">
-                <FontAwesomeIcon icon={faMapMarkerAlt} size="2x" />
-                <p>Society of Computer Sciences,</p>
-                <p>Faculty of Computer Sciences,</p>
-                <p>Sabaragamuwa University of Sri Lanka,</p>
-                <p>P.O. Box 02, Belihuloya, 70140, Sri Lanka.</p>
-              </div>
+            <a href="mailto:socs@appsc.sab.ac.lk" className="hover:text-gray-500 flex  space-x-2 ml-8">
+              <FontAwesomeIcon icon={faMapMarkerAlt} style={{ fontSize: '38px' }} />
+              <p className="text-[15px]">
+                Society of Computer Sciences,<br/>
+                Faculty of Computer Sciences, <br/>
+                Sabaragamuwa University of Sri Lanka, <br/>
+                P.O. Box 02, Belihuloya, 70140, Sri Lanka.
+              </p>
             </a>
           </div>
         </section>
