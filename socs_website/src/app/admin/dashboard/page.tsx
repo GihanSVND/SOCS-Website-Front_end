@@ -78,7 +78,7 @@ export default function Dashboard() {
                 ].map((rect) => (
                     <div
                         key={rect.id}
-                        className={`${poppins2.className} border bg-[#141414] w-full aspect-square rounded-[17px] shadow-md flex flex-col items-center justify-center text-white text-lg font-semibold cursor-pointer transition hover:bg-white hover:text-black hover:shadow-[0_0_20px_10px_rgba(255,255,255,0.2)]`}
+                        className={`${poppins2.className} border bg-[#141414] w-full aspect-square rounded-[17px] shadow-md flex flex-col items-center justify-center text-white text-lg font-semibold cursor-pointer transition hover:bg-white hover:text-black hover:shadow-[0_0_20px_10px_rgba(255,255,255,0.2)] border-opacity-10`}
                         onClick={() => handleRectangleClick(rect.page)}
                     >
                         <div className="text-7xl mb-4">{rect.icon}</div> {/* Increased icon size */}
