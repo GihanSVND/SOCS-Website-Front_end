@@ -49,6 +49,8 @@ const AdminCommitteeMembersPage = () => {
         const file = files[0];
 
         try {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             const path = await uploadFile(file, '/api/upload_image', 'committee_members');
             setFormData({...formData, imageSrc: path});
         } catch (error) {

@@ -53,32 +53,59 @@ const NewsPage = () => {
         if (!files || files.length === 0) return;
         const file = files[0];
 
+
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        setFormData({...formData, imageSrc: file}); // Store File object temporarily
+
         try {
-            const path = await uploadFile(file, '/api/upload_image', 'news');
-            setFormData({...formData, imageSrc: path});
+            showAlert('Uploading image, please wait...', 'info');
+            const imageUrl = await uploadFile(file, '/api/upload_image'); // Upload file
+            setFormData({...formData, imageSrc: imageUrl}); // Replace File with URL
+            showAlert('Image uploaded successfully!', 'success');
         } catch (error) {
             console.error('Error uploading file:', error);
             showAlert('Failed to upload file.', 'error');
         }
     };
 
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
+
         try {
-            await saveRecord('news', formData);
+            let imageUrl = formData.imageSrc; // Check if image URL already exists
+
+            // If imageSrc is a File (new file selected), upload it first
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            if (formData.imageSrc instanceof File) {
+                showAlert('Uploading image, please wait...', 'info');
+                imageUrl = await uploadFile(formData.imageSrc, '/api/upload_image'); // Upload file
+                showAlert('Image uploaded successfully!', 'success');
+            }
+
+            // Ensure we're passing a string (image URL) when saving the news record
+            await saveRecord('news', {...formData, imageSrc: imageUrl});
+
+            // Reload news items
             const data = await fetchAll('news');
             setNewsItems(data);
+
+            // Reset form after successful submission
             setFormData({id: '', title: '', description: '', imageSrc: ''});
+
             showAlert('News saved successfully!', 'success');
         } catch (error) {
             console.error('Error saving news item:', error);
             showAlert('Failed to save news.', 'error');
         } finally {
             setLoading(false);
-            loadNewsItems(); // Refresh the page data
+            loadNewsItems();
         }
     };
+
 
     const handleDelete = async (id: string, imagePath: string) => {
         try {
