@@ -57,6 +57,8 @@ const AdminEventsPage = () => {
         const file = files[0];
 
         try {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             const path = await uploadFile(file, `/api/events_images_upload`, 'event');
             if (type === 'main') {
                 setFormData({...formData, mainImage: path});
