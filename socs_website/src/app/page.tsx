@@ -7,8 +7,6 @@ import Footer from "@/components/footer";
 import AnnouncementsSection from "@/components/sections/announcementSection";
 import CollaborationsSection from "@/components/sections/CollaborationsSection";
 import {Poppins} from "next/font/google";
-import Head from "next/head";
-
 
 const poppins4 = Poppins({weight: "400", subsets: ["latin"]});
 const poppins5 = Poppins({weight: "500", subsets: ["latin"]});
