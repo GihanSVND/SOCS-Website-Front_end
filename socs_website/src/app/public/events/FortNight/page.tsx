@@ -143,15 +143,14 @@ function FortNight() {
               </div>
             </div>
             <p className="text-center text-lg mt-16 mr-28 ml-28">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-              Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, 
-              when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-              It has survived not only five centuries, but also the leap into electronic typesetting, 
-              remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
-              and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            Fortnight is a monthly knowledge-sharing event organized by the Society of Computer Sciences (SOCS) where students from the Faculty of Computing present insightful sessions on various tech-related topics. Designed to foster peer learning and intellectual engagement, the event also includes fun activities, creating an interactive and enjoyable environment. Fortnight serves as a platform for students to enhance their presentation skills, exchange knowledge, and stay updated with emerging trends in the field of computing.
             </p>
           </div>
+          <div>
+      <h2 className={`${poppins3.className} text-5xl font-semibold mb-4 text-white text-center py-[70px]`}>UPDATES</h2>
+      </div>
           <Footer/>
+          
         </div>
       );
     }
