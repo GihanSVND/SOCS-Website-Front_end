@@ -15,7 +15,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-black text-white flex items-center justify-between px-6 py-4 relative">
+    <nav className="z-20 bg-black text-white flex items-center justify-between px-6 py-4 relative">
 
       {/* Left Logo (Desktop) & Mobile Menu Button */}
       <div className="absolute left-4 md:left-20 flex items-center">
