@@ -143,13 +143,13 @@ export default function Home() {
           </div>
         </div>
         <p className="text-center text-lg mt-16 mr-28 ml-28">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-          Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, 
-          when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-          It has survived not only five centuries, but also the leap into electronic typesetting, 
-          remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
-          and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+          Let Me Hack is an inter-university hackathon organized by the Society of Computer Sciences (SOCS), bringing together innovative minds to develop eco-friendly technological solutions. With sustainability as its core theme, the competition challenges participants to create impactful and sustainable tech-driven solutions. Having successfully conducted Let Me Hack V1.0 and V2.0, the event continues to foster creativity, collaboration, and problem-solving skills among university students, inspiring them to drive positive environmental change through technology.
+
+
         </p>
+      </div>
+      <div>
+      <h2 className={`${poppins3.className} text-5xl font-semibold mb-4 text-white text-center py-[70px]`}>UPDATES</h2>
       </div>
       <Footer/>
     </div>
