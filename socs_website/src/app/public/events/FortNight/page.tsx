@@ -143,7 +143,7 @@ function FortNight() {
               </div>
             </div>
             <p className="text-center text-lg mt-16 mr-28 ml-28">
-            Fortnight is a monthly knowledge-sharing event organized by the Society of Computer Sciences (SOCS), where students from the Faculty of Computing present insightful sessions on various tech-related topics. Designed to foster peer learning and intellectual engagement, the event also includes fun activities, creating an interactive and enjoyable environment. Fortnight serves as a platform for students to enhance their presentation skills, exchange knowledge, and stay updated with emerging trends in the field of computing.
+            Fortnight is a monthly knowledge-sharing event organized by the Society of Computer Sciences (SOCS) where students from the Faculty of Computing present insightful sessions on various tech-related topics. Designed to foster peer learning and intellectual engagement, the event also includes fun activities, creating an interactive and enjoyable environment. Fortnight serves as a platform for students to enhance their presentation skills, exchange knowledge, and stay updated with emerging trends in the field of computing.
             </p>
           </div>
           <div>
