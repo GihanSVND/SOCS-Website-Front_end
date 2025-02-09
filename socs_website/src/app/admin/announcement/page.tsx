@@ -124,7 +124,7 @@ const AdminAnnouncementsPage = () => {
         <div className="p-[30px]">
             {alert && <Alert message={alert.message} type={alert.type} onClose={() => setAlert(null)}/>}
             <div className="flex flex-col py-[70px] justify-center items-center relative ">
-                <h1 className={`${poppins4.className} absolute text-[30px] sm:text-[40px] md:text-[60px] font-extrabold text-gray-300 `}>Announcements</h1>
+                <h1 className={`${poppins4.className} absolute text-[30px] sm:text-[40px] md:text-[60px] font-extrabold text-black `}>Announcements</h1>
             </div>
             <div className={`${poppins2.className} px-[50px] sm:px-[100px] md:px-[150px]`}>
                 <AdminForm
