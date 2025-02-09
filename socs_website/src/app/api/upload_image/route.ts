@@ -19,7 +19,7 @@ export async function POST(req: Request) {
         const fileBlob = new Blob([fileBuffer], {type: file.type});
 
         // Upload file to Supabase Storage
-        const {data, error} = await supabase.storage
+        const {error} = await supabase.storage
             .from('images') // Replace with your actual Supabase bucket name
             .upload(fileName, fileBlob, {
                 contentType: file.type, // Ensures correct file type

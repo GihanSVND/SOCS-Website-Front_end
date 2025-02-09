@@ -53,7 +53,7 @@ const NewsPage = () => {
         if (!files || files.length === 0) return;
         const file = files[0];
 
-        // @ts-ignore
+        //@ts-expect-error
         setFormData({ ...formData, imageSrc: file }); // Store File object temporarily
 
         try {
@@ -76,7 +76,7 @@ const NewsPage = () => {
             let imageUrl = formData.imageSrc; // Check if image URL already exists
 
             // If imageSrc is a File (new file selected), upload it first
-            // @ts-ignore
+            //@ts-expect-error
             if (formData.imageSrc instanceof File) {
                 showAlert('Uploading image, please wait...', 'info');
                 imageUrl = await uploadFile(formData.imageSrc, '/api/upload_image'); // Upload file
