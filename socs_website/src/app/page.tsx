@@ -25,10 +25,6 @@ export default function Home() {
     }, []);
 
     return (
-        <>
-            <Head>
-                <meta name="google-site-verification" content="o2HXFlunKthkmZlEzQQ3iWt_XZBe3d9wNAN6RgifN5c"/>
-            </Head>
             <div className="bg-black text-white">
                 <Navbar></Navbar>
                 {/* Hero Section */}
@@ -115,6 +111,5 @@ export default function Home() {
 
                 <Footer></Footer>
             </div>
-        </>
     );
 }
