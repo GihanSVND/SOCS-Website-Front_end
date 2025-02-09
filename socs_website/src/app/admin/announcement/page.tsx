@@ -51,7 +51,8 @@ const AdminAnnouncementsPage = () => {
         if (!files || files.length === 0) return;
         const file = files[0];
 
-        // @ts-ignore: imageSrc can be a File before upload
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         setFormData({ ...formData, imageSrc: file }); // Store file object temporarily
 
         try {

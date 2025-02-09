@@ -54,13 +54,14 @@ const NewsPage = () => {
         const file = files[0];
 
 
-        // @ts-ignore: imageSrc can be a File before upload
-        setFormData({ ...formData, imageSrc: file }); // Store File object temporarily
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        setFormData({...formData, imageSrc: file}); // Store File object temporarily
 
         try {
             showAlert('Uploading image, please wait...', 'info');
             const imageUrl = await uploadFile(file, '/api/upload_image'); // Upload file
-            setFormData({ ...formData, imageSrc: imageUrl }); // Replace File with URL
+            setFormData({...formData, imageSrc: imageUrl}); // Replace File with URL
             showAlert('Image uploaded successfully!', 'success');
         } catch (error) {
             console.error('Error uploading file:', error);
@@ -77,7 +78,8 @@ const NewsPage = () => {
             let imageUrl = formData.imageSrc; // Check if image URL already exists
 
             // If imageSrc is a File (new file selected), upload it first
-            // @ts-expect-error: `formData.imageSrc` might be a `string` or `File`, and TypeScript does not allow this direct check.
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             if (formData.imageSrc instanceof File) {
                 showAlert('Uploading image, please wait...', 'info');
                 imageUrl = await uploadFile(formData.imageSrc, '/api/upload_image'); // Upload file
@@ -85,14 +87,14 @@ const NewsPage = () => {
             }
 
             // Ensure we're passing a string (image URL) when saving the news record
-            await saveRecord('news', { ...formData, imageSrc: imageUrl });
+            await saveRecord('news', {...formData, imageSrc: imageUrl});
 
             // Reload news items
             const data = await fetchAll('news');
             setNewsItems(data);
 
             // Reset form after successful submission
-            setFormData({ id: '', title: '', description: '', imageSrc: '' });
+            setFormData({id: '', title: '', description: '', imageSrc: ''});
 
             showAlert('News saved successfully!', 'success');
         } catch (error) {
