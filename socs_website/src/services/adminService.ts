@@ -71,38 +71,23 @@ export async function deleteRecord(tableName: string, id: string, imagePath?: st
 }
 
 
-/**
- * Uploads a file to the server and returns the relative file path.
- * @param file The file to upload.
- * @param apiEndpoint The API endpoint to handle the file upload.
- * @param uploadDir
- */
-export async function uploadFile(file: File, apiEndpoint: string, uploadDir: string): Promise<string> {
-    const reader = new FileReader();
+export async function uploadFile(file: File, endpoint: string): Promise<string> {
+    const formData = new FormData();
+    formData.append('file', file); // Ensure proper file upload
 
-    return new Promise((resolve, reject) => {
-        reader.onload = async (e) => {
-            if (!e.target?.result) return reject('File read error');
-
-            const base64Image = e.target.result.toString();
-            try {
-                const response = await fetch(apiEndpoint, {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({file: base64Image, uploadDir}),
-                });
-
-                const {path} = await response.json();
-                resolve(path);
-            } catch (error) {
-                console.error('Error uploading file:', error);
-                reject(error);
-            }
-        };
-
-        reader.readAsDataURL(file);
+    const response = await fetch(endpoint, {
+        method: 'POST',
+        body: formData, // Send multipart form-data
     });
+
+    if (!response.ok) {
+        throw new Error('File upload failed');
+    }
+
+    const result = await response.json();
+    return result.path; // Return the public URL from Supabase
 }
+
 
 /**
  * Deletes multiple images by their paths.
@@ -112,8 +97,8 @@ export async function deleteEventImages(imagePaths: string[]) {
     try {
         const response = await fetch('/api/delete_event_images', {
             method: 'DELETE',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ imagePaths }),
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({imagePaths}),
         });
 
         if (!response.ok) {
