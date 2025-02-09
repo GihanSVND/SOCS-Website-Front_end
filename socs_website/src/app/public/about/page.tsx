@@ -91,7 +91,7 @@ export default function About() {
                 VISION
               </h2>
               <p className={`${poppins3.className} text-[14px] font-light leading-[21px] text-gray-300 pl-4`}>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.
+              spearheading global innovation by a vibrant community of next-generation technologists. We network innovators to attract, nurture, and retain exceptional talent in technical disciplines, empowering them to their expertise and creativity to engineer groundbreaking solutions that uplift humanity to create the future of technology.
               </p>
             </div>
 
@@ -101,7 +101,7 @@ export default function About() {
                 MISSION
               </h2>
               <p className={`${poppins3.className} text-[14px] font-light leading-[21px] text-gray-300 pr-4`}>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.
+              Our mission is to cultivate a community of learners and innovators by providing exceptional educational opportunities, Networking ,collaboration, and nurturing creativity.
               </p>
             </div>
           </div>
