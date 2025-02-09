@@ -53,6 +53,7 @@ const NewsPage = () => {
         if (!files || files.length === 0) return;
         const file = files[0];
 
+        //@typescript-eslint/ban-ts-comment
         //@ts-expect-error
         setFormData({ ...formData, imageSrc: file }); // Store File object temporarily
 
@@ -76,6 +77,7 @@ const NewsPage = () => {
             let imageUrl = formData.imageSrc; // Check if image URL already exists
 
             // If imageSrc is a File (new file selected), upload it first
+            //@typescript-eslint/ban-ts-comment
             //@ts-expect-error
             if (formData.imageSrc instanceof File) {
                 showAlert('Uploading image, please wait...', 'info');
