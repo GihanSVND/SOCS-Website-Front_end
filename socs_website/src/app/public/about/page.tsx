@@ -5,7 +5,6 @@ import { FaFacebookF, FaLinkedinIn, FaInstagram } from "react-icons/fa";
 import Image from 'next/image';
 import Footer from "@/components/footer";
 import PioneersGallery from "@/components/pioneers_gallery";
-import OurJourney from "@/components/our_journey";
 import React from "react";
 
 
