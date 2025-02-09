@@ -3,6 +3,10 @@ import Navbar from "@/components/navbar";
 import { Poppins } from "next/font/google";
 import { FaFacebookF, FaLinkedinIn, FaInstagram } from "react-icons/fa";
 import Image from 'next/image';
+import Footer from "@/components/footer";
+import PioneersGallery from "@/components/pioneers_gallery";
+import OurJourney from "@/components/our_journey";
+import React from "react";
 
 
 const poppins3 = Poppins({ weight: "300", subsets: ["latin"] });
@@ -102,6 +106,18 @@ export default function About() {
           </div>
         </div>
       </div>
+
+      <OurJourney></OurJourney>
+
+      {/* Executive Committee Section */}
+      <section className="text-center py-16 bg-black">
+        <h2 className={`${poppins3.className} text-[45px] font-light leading-[67.5px] border-gray-500  mb-4`}>PIONEERS</h2>
+        <p className="text-lg mb-12 text-gray-400 ">Year 2023 / 2024</p>
+        <PioneersGallery/>
+      </section>
+
+      <Footer/>
     </div>
+
   );
 }
