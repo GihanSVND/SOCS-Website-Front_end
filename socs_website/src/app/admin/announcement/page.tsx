@@ -51,8 +51,7 @@ const AdminAnnouncementsPage = () => {
         if (!files || files.length === 0) return;
         const file = files[0];
 
-        //@typescript-eslint/ban-ts-comment
-        //@ts-expect-error
+        // @ts-ignore: imageSrc can be a File before upload
         setFormData({ ...formData, imageSrc: file }); // Store file object temporarily
 
         try {
@@ -75,8 +74,7 @@ const AdminAnnouncementsPage = () => {
             let imageUrl = formData.imageSrc; // Check if image is already uploaded
 
             // If a new file is selected (not a URL), upload it first
-            //@typescript-eslint/ban-ts-comment
-            //@ts-expect-error
+            // @ts-ignore: TypeScript does not infer that imageSrc can be a File
             if (formData.imageSrc && formData.imageSrc instanceof File) {
                 showAlert('Uploading image, please wait...', 'info');
                 imageUrl = await uploadFile(formData.imageSrc, '/api/upload_image');

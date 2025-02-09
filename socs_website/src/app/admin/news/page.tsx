@@ -54,7 +54,7 @@ const NewsPage = () => {
         const file = files[0];
 
 
-        // @ts-ignore : error in imageSrc
+        // @ts-ignore: imageSrc can be a File before upload
         setFormData({ ...formData, imageSrc: file }); // Store File object temporarily
 
         try {
