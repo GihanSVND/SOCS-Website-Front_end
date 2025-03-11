@@ -27,32 +27,29 @@ export default function Home() {
                 <Navbar></Navbar>
                 {/* Hero Section */}
                 <section>
-                    <div className="relative flex items-center justify-center h-screen bg-black">
-                        <div className="absolute inset-0 z-0 flex justify-center items-center">
-                            <Image
-                                src="/images/socs_with_head.png"
-                                alt="Robotic Head"
-                                width={600}
-                                height={500}
-                                className={`z-0 opacity-90 transform transition-transform duration-[1200ms] ${
-                                    isLoaded ? "scale-[1.1]" : "scale-[0.8]"
-                                }`}
-                            />
-                        </div>
-                        <div className="z-0 flex space-x-4">
-                            <Image
-                                src="/images/robotic-head.png"
-                                alt="Robotic Head"
-                                width={500}
-                                height={500}
-                                className={`z-10 opacity-100 transform transition-transform duration-[1200ms] ${
-                                    isLoaded ? "scale-[1.35]" : "scale-[1.6]"
-                                }`}
-                            />
-                            <div
-                                className="absolute bottom-10 left-0 right-0 h-32 bg-gradient-to-t from-black/70 to-transparent blur-md"></div>
-                        </div>
-                    </div>
+                <div className="relative flex items-center justify-center h-screen bg-black overflow-hidden">
+            <div className="absolute inset-0 z-0 flex justify-center items-center">
+                <Image
+                    src="/images/socs_with_head.png"
+                    alt="Robotic Head"
+                    width={600}
+                    height={500}
+                    className={`z-0 opacity-90 transform transition-transform duration-[1200ms] 
+                        ${isLoaded ? "scale-[0.8] md:scale-[1.05] sm:scale-[0.9]" : "scale-[0.6] md:scale-[0.75] sm:scale-[0.6]"}`}
+                />
+            </div>
+            <div className="z-0 flex space-x-4">
+                <Image
+                    src="/images/robotic-head.png"
+                    alt="Robotic Head"
+                    width={500}
+                    height={500}
+                    className={`z-10 opacity-100 transform transition-transform duration-[1200ms] 
+                        ${isLoaded ? "scale-[0.9] md:scale-[1.35] sm:scale-[1.1]" : "scale-[1.0] md:scale-[1.6] sm:scale-[1.2]"}`}
+                />
+                <div className="absolute bottom-10 left-0 right-0 h-32 bg-gradient-to-t from-black/70 to-transparent blur-md"></div>
+            </div>
+        </div>
                     <div className="z-10 text-center">
                         <h1 className={`${poppins4.className} text-6xl  tracking-tight`}>
                             SOCIETY OF COMPUTER SCIENCES
