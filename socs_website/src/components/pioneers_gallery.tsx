@@ -90,13 +90,13 @@ const PioneersGallery = () => {
                 transition={{duration: 0.5}}
             >
                 <div className="flex justify-center px-4">
-                    <div className="grid grid-cols-4 gap-14 max-w-4xl">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-14 max-w-4xl">
                         {currentMembers.slice(0, 4).map((member, index) => (
                             <div key={index} className="text-center">
                                 <div className="w-32 h-32 mx-auto mb-4 relative">
                                     <Image
                                         src={member.imageSrc}
-                                        alt= " "
+                                        alt=" "
                                         width={128}
                                         height={128}
                                         className="rounded-full border-4 border-white object-cover"
@@ -110,22 +110,24 @@ const PioneersGallery = () => {
                 </div>
 
                 {/* Last 3 members centered */}
-                <div className="flex justify-center gap-14 mt-12">
-                    {currentMembers.slice(4).map((member, index) => (
-                        <div key={index} className="text-center">
-                            <div className="w-32 h-32 mx-auto mb-4 relative">
-                                <Image
-                                    src={member.imageSrc}
-                                    alt=" "
-                                    width={128}
-                                    height={128}
-                                    className="rounded-full border-4 border-white object-cover"
-                                />
+                <div className="flex justify-center mt-12">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-14">
+                        {currentMembers.slice(4).map((member, index) => (
+                            <div key={index} className="text-center">
+                                <div className="w-32 h-32 mx-auto mb-4 relative">
+                                    <Image
+                                        src={member.imageSrc}
+                                        alt=" "
+                                        width={128}
+                                        height={128}
+                                        className="rounded-full border-4 border-white object-cover"
+                                    />
+                                </div>
+                                <h3 className="font-bold text-lg">{member.role}</h3>
+                                <p className="text-sm text-gray-300">{member.name}</p>
                             </div>
-                            <h3 className="font-bold text-lg">{member.role}</h3>
-                            <p className="text-sm text-gray-300">{member.name}</p>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
             </motion.div>
         </section>
