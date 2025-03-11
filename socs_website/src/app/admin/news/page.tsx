@@ -170,8 +170,8 @@ const NewsPage = () => {
                             className="w-full h-56 object-cover"
                         />
                         <div className="p-4">
-                            <h3 className="text-xl font-bold">{newsItem.title}</h3>
-                            <p className="mt-2">{newsItem.description}</p>
+                            <h3 className="text-xl text-white font-bold">{newsItem.title}</h3>
+                            <p className="mt-2 text-white">{newsItem.description}</p>
                         </div>
                         <div className="flex justify-end p-4">
                             <button
