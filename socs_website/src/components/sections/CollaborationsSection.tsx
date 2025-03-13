@@ -35,8 +35,8 @@ const CollaborationsSection = () => {
 
     return (
         <section className="text-center py-16 bg-black">
-            <h2 className={`${poppins5.className} text-5xl pt-10 font-semibold mb-4 text-white`}>COLLABORATIONS</h2>
-            <p className={`${poppins4.className} mt-10 mx-auto max-w-5xl text-white`}>
+            <h2 className={`${poppins5.className} text-4xl md:text-5xl pt-10 font-semibold mb-4 text-white`}>COLLABORATIONS</h2>
+            <p className={`${poppins4.className} mt-10  mr-[25px] ml-[25px] md:mx-auto max-w-5xl text-white text-[12px] sm:text-[14px] md:text-[16px]`}>
             The Society of Computer Sciences (SOCS) actively collaborates with various organizations within the university and leading tech companies across Sri Lanka to enhance students learning experiences and industry exposure. These partnerships enable SOCS to organize workshops, tech talks, hackathons, and career development programs, providing undergraduates with valuable networking opportunities and hands-on experience. By bridging academia and industry, SOCS ensures that students stay updated with the latest technological advancements and gain practical insights that prepare them for future careers in the IT field.
             </p>
             {loading ? (

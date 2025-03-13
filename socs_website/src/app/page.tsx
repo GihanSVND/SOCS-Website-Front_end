@@ -59,13 +59,13 @@ export default function Home() {
           </div>
         </div>
         <div className="z-10 text-center">
-          <h1 className={`${poppins4.className} text-6xl  tracking-tight`}>
+          <h1 className={`${poppins4.className} text-3xl sm:text-4xl md:text-6xl  tracking-tight`}>
             SOCIETY OF COMPUTER SCIENCES
           </h1>
-          <p className={`${poppins4.className} text-2xl mt-4`}>
+          <p className={`${poppins4.className} text-l sm:text-xl md:text-2xl mt-4`}>
             Sabaragamuwa University of Sri Lanka
           </p>
-          <p className={`${poppins4.className} mt-10 mx-auto max-w-5xl p-3`}>
+          <p className={`${poppins4.className} mt-10 mx-auto max-w-5xl p-3 text-[12px] sm:text-[14px] md:text-[16px]`}>
             The Society of Computer Sciences - S0CS at Sabaragamuwa University
             of Sri Lanka is a leading student organization within the university
             and the Faculty of Computing, dedicated to enhancing knowledge,
@@ -83,7 +83,7 @@ export default function Home() {
       {/* Executive Committee Section */}
       <section className="text-center pt-16 bg-black">
         <h2
-          className={`${poppins5.className} text-5xl font-semibold mb-4 text-white`}
+          className={`${poppins5.className} text-3xl sm:text-4xl md:text-5xl font-semibold mb-4 text-white`}
         >
           EXECUTIVE COMMITTEE
         </h2>
