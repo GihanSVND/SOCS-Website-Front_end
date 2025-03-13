@@ -84,7 +84,7 @@ export default function About() {
           </div>
 
           {/* Right Text */}
-          <div className="space-y-12 mt-20" style={{ marginRight: "50px" }}>
+          <div className="space-y-12 mt-20 mx-[10px] " >
             
             {/* Vision Section */}
             <div className="text-left">
