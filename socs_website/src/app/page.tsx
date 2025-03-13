@@ -27,7 +27,7 @@ export default function Home() {
       <Navbar></Navbar>
       {/* Hero Section */}
       <section>
-        <div className="relative flex items-center justify-center h-screen bg-black overflow-hidden">
+        <div className="relative flex items-center justify-center h-[700px] md:h-screen bg-black overflow-hidden">
           <div className="absolute inset-0 z-0 flex justify-center items-center">
             <Image
               src="/images/socs_with_head.png"
