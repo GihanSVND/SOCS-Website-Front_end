@@ -121,7 +121,7 @@ export default function News() {
                                 <div
                                     className="absolute inset-0 bg-gradient-to-t from-transparent to-black opacity-30 rounded-b-lg md:rounded-r-lg md:rounded-bl-none"></div>
                                 <span
-                                    className={`${poppins3.className} text-white text-lg md:text-xl lg:text-2xl font-semibold tracking-wide leading-relaxed drop-shadow-md z-10`}>
+                                    className={`${poppins3.className} text-white text-[10px] sm:text-[12px] md:text-[14px] mx-10 my-10 font-semibold tracking-wide leading-relaxed drop-shadow-md z-10`}>
                                     {newsItems[currentIndex]?.description}
                                 </span>
                             </div>
