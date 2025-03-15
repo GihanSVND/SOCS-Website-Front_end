@@ -10,6 +10,7 @@ import React from "react";
 
 const poppins3 = Poppins({ weight: "300", subsets: ["latin"] });
 const poppins4 = Poppins({ weight: "400", subsets: ["latin"] });
+const poppins5 = Poppins({ weight: "500", subsets: ["latin"] });
 
 
 export default function About() {
@@ -22,14 +23,14 @@ export default function About() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           
           {/* Left Text Section */}
-          <div className="space-y-6 text-left">
-            <h1 className={`${poppins4.className} text-[100px] text-gray-300 leading-none mt-7 ml-10 mb-2`}>
+          <div className="space-y-6 text-center sm:text-left">
+            <h1 className={`${poppins4.className} text-[100px] text-gray-300 leading-none mt-7  mb-2`}>
               SOCS
             </h1>
-            <h2 className={`${poppins4.className} text-[21px] text-gray-300 leading-[35px] tracking-[0.09em] ml-10 mb-10`}>
+            <h2 className={`${poppins4.className} text-[21px] text-gray-300 leading-[35px] tracking-[0.09em]  mb-10`}>
               SABARAGAMUWA UNIVERSITY OF SRI LANKA
             </h2>
-            <p className={`${poppins3.className} text-[14px] leading-[25.5px]  ml-10`}>
+            <p className={`${poppins3.className} text-[12px] sm:text-[14px] md:text-[16px] leading-[25.5px]  `}>
             The Society of Computer Sciences - SOCS at Sabaragamuwa University
             of Sri Lanka is a leading student organization within the university
             and the Faculty of Computing, dedicated to enhancing knowledge,
@@ -38,10 +39,10 @@ export default function About() {
             hackathons, guest lectures, and networking sessions, providing
             students with hands-on learning opportunities and industry exposure
             </p>
-            <h3 className={`${poppins3.className} text-[21px] leading-[35px] tracking-[0.09em] ml-10 mb-0`}>
+            <h3 className={`${poppins3.className} text-[21px] tracking-[0.09em]  mb-0`}>
               FOLLOW US ON
             </h3>
-            <div className="flex space-x-14 ml-10 mt-0">
+            <div className="flex justify-center md:justify-start item-center  space-x-14 mt-0">
               <a href="#" className="text-white hover:text-gray-400">
                 <FaFacebookF size={45} />
               </a>
@@ -55,7 +56,7 @@ export default function About() {
           </div>
           
           {/* Right Image Section */}
-          <div className="flex justify-center">
+          <div className="hidden sm:flex justify-center">
             <Image
               src="/images/MountImg.png"
               alt="Mountain Image"
@@ -83,7 +84,7 @@ export default function About() {
           </div>
 
           {/* Right Text */}
-          <div className="space-y-12 mt-20" style={{ marginRight: "50px" }}>
+          <div className="space-y-12 mt-20 mx-[10px] " >
             
             {/* Vision Section */}
             <div className="text-left">
@@ -109,14 +110,16 @@ export default function About() {
       </div>
 
       
-      <div className="container mx-auto px-6 py-12">
-      <h2 className={`${poppins4.className} text-5xl text-center py-7 font-semibold mb-4 text-white`}>OUR JOURNEY</h2>
+      <div className="container text-center  mx-auto px-10">
+
+      <h2 className={`${poppins5.className} text-4xl md:text-5xl py-7 font-semibold mb-4 text-white`}>ANNOUNCEMENT</h2>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           
           {/* Left Text Section */}
-          <div className="space-y-6 text-left">
+          <div className="space-y-6 text-center sm:text-left">
             
-            <p className={`${poppins3.className} text-[14px] leading-[25.5px]  ml-10`}>
+            <p className={`${poppins3.className} text-[12px] sm:text-[14px] md:text-[16px] leading-[25.5px] `}>
             Founded in 2012 by students of the Department of Computing and Information Systems, the Society of Computer Sciences (SOCS) aims to enhance IT knowledge among undergraduates. It organizes university-wide events, addresses IT-related needs, and promotes computer literacy among students and the broader community. Through its commitment to education and innovation, SOCS continues to shape the IT landscape at Sabaragamuwa University of Sri Lanka.
             </p>
             
