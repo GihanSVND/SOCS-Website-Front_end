@@ -70,7 +70,7 @@ function FortNight() {
           </div>
           <div className="flex flex-col py-[100px] justify-center items-center relative ">
             <h1
-              className={`${poppins3.className} absolute text-[60px] font-extrabold text-gray-300`}
+              className={`${poppins3.className} text-center absolute text-[60px] font-extrabold text-gray-300`}
             >
               FortNight
             </h1>
@@ -142,7 +142,7 @@ function FortNight() {
                 </div>
               </div>
             </div>
-            <p className="text-center text-lg mt-16 mr-28 ml-28">
+            <p className="text-center text-lg mt-16 mx-10 sm:mx-20 md:mx-28">
             Fortnight is a monthly knowledge-sharing event organized by the Society of Computer Sciences (SOCS) where students from the Faculty of Computing present insightful sessions on various tech-related topics. Designed to foster peer learning and intellectual engagement, the event also includes fun activities, creating an interactive and enjoyable environment. Fortnight serves as a platform for students to enhance their presentation skills, exchange knowledge, and stay updated with emerging trends in the field of computing.
             </p>
           </div>

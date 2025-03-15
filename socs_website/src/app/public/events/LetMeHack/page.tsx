@@ -1,4 +1,4 @@
-"use client";
+ "use client";
 import Navbar from "@/components/navbar";
 import EventNavBar from "@/components/eventsNavBar";
 import ImageSlider from "@/components/cardSliderPage";
@@ -70,7 +70,7 @@ export default function Home() {
       </div>
       <div className="flex flex-col py-[100px] justify-center items-center relative ">
         <h1
-          className={`${poppins3.className} absolute text-[60px] font-extrabold text-gray-300`}
+          className={`${poppins3.className} text-center absolute text-[60px] font-extrabold text-gray-300`}
         >
           Let Me Hack
         </h1>
@@ -142,7 +142,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <p className="text-center text-lg mt-16 mr-28 ml-28">
+        <p className="text-center text-lg mt-16 mx-10 sm:mx-20 md:mx-28">
           Let Me Hack is an inter-university hackathon organized by the Society of Computer Sciences (SOCS), bringing together innovative minds to develop eco-friendly technological solutions. With sustainability as its core theme, the competition challenges participants to create impactful and sustainable tech-driven solutions. Having successfully conducted Let Me Hack V1.0 and V2.0, the event continues to foster creativity, collaboration, and problem-solving skills among university students, inspiring them to drive positive environmental change through technology.
 
 
