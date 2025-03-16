@@ -49,31 +49,50 @@ const AdminCommitteeMembersPage = () => {
         const file = files[0];
 
         try {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            const path = await uploadFile(file, '/api/upload_image', 'committee_members');
-            setFormData({...formData, imageSrc: path});
+            showAlert('Uploading image, please wait...', 'info');
+            const imageUrl = await uploadFile(file, '/api/upload_image');
+            setFormData((prevFormData) => ({ ...prevFormData, imageSrc: imageUrl }));
+            showAlert('Image uploaded successfully!', 'success');
         } catch (error) {
             console.error('Error uploading file:', error);
             showAlert('Failed to upload file.', 'error');
         }
     };
 
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
+
         try {
-            await saveRecord('committee_members', formData);
+            let imageUrl = formData.imageSrc; // Check if an image URL already exists
+
+            // If imageSrc is a File (new file selected), upload it first
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            if (formData.imageSrc instanceof File) {
+                showAlert('Uploading image, please wait...', 'info');
+                imageUrl = await uploadFile(formData.imageSrc, '/api/upload_image'); // Upload the file
+                showAlert('Image uploaded successfully!', 'success');
+            }
+
+            // Ensure we're passing a string (image URL) when saving the committee member record
+            await saveRecord('committee_members', { ...formData, imageSrc: imageUrl });
+
+            // Reload committee members
             const data = await fetchAll('committee_members');
             setCommitteeMembers(data);
-            setFormData({id: '', name: '', role: '', imageSrc: ''});
-            showAlert('Committee Members saved successfully!', 'success');
+
+            // Reset form after successful submission
+            setFormData({ id: '', name: '', role: '', imageSrc: '' });
+
+            showAlert('Committee Member saved successfully!', 'success');
         } catch (error) {
             console.error('Error saving committee member:', error);
             showAlert('Failed to save committee member.', 'error');
         } finally {
             setLoading(false);
-            loadCommitteeMembers(); // Refresh the page data
+            loadCommitteeMembers(); // Refresh the list
         }
     };
 

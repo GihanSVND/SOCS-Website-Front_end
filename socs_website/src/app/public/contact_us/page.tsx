@@ -175,7 +175,7 @@ export default function ContactUs() {
                           value={category}
                           checked={formData.category === category} // Ensure the radio is checked if the value matches
                           onChange={handleChange}
-                          className="appearance-none w-4 h-4 border-2 border-gray-500 rounded-md bg-black focus:outline-none relative"
+                          className="w-4 h-4 border-2 border-gray-500 rounded-md bg-black focus:outline-none relative"
                       />
                       <span className="text-white">{category.charAt(0).toUpperCase() + category.slice(1)}</span>
                     </label>
