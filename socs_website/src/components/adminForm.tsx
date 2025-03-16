@@ -5,7 +5,7 @@ interface FormField {
     name: string;
     type: 'text' | 'file' | 'hidden'|'select';
     value?: string;
-    //@typescript-eslint/no-explicit-an
+    /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
     onChange: (e: React.ChangeEvent<any>) => void;
     required?: boolean;
     options?: { label: string; value: string }[];
