@@ -73,11 +73,11 @@ export async function deleteRecord(tableName: string, id: string, imagePath?: st
 
 export async function uploadFile(file: File, endpoint: string): Promise<string> {
     const formData = new FormData();
-    formData.append('file', file); // Ensure proper file upload
+    formData.append('file', file);
 
     const response = await fetch(endpoint, {
         method: 'POST',
-        body: formData, // Send multipart form-data
+        body: formData,
     });
 
     if (!response.ok) {
