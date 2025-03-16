@@ -3,10 +3,12 @@ import React from 'react';
 interface FormField {
     label: string;
     name: string;
-    type: 'text' | 'file' | 'hidden';
+    type: 'text' | 'file' | 'hidden'|'select';
     value?: string;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+    onChange: (e: React.ChangeEvent<any>) => void;
     required?: boolean;
+    options?: { label: string; value: string }[];
 }
 
 interface ReusableFormProps {
@@ -23,7 +25,21 @@ const AdminForm: React.FC<ReusableFormProps> = ({fields, onSubmit, buttonText}) 
                     {field.type !== 'hidden' && (
                         <label className="block text-white font-medium mb-2">{field.label}</label>
                     )}
-                    {field.type === 'file' ? (
+                    {field.type === 'select' ? (
+                        <select
+                            name={field.name}
+                            value={field.value}
+                            onChange={field.onChange}
+                            required={field.required}
+                            className="border rounded-[37px] p-3 w-full focus:outline-none bg-[#252525] transition focus:shadow-[0_0_15px_5px_rgba(255,255,255,0.4)]"
+                        >
+                            {field.options?.map((option) => (
+                                <option key={option.value} value={option.value}>
+                                    {option.label}
+                                </option>
+                            ))}
+                        </select>
+                    ):field.type === 'file' ? (
                         <div className="w-full">
                             <label
                                 htmlFor={field.name}

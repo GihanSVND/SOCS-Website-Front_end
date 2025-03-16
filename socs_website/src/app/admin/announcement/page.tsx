@@ -53,12 +53,12 @@ const AdminAnnouncementsPage = () => {
 
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        setFormData({ ...formData, imageSrc: file }); // Store file object temporarily
+        setFormData({...formData, imageSrc: file}); // Store file object temporarily
 
         try {
             showAlert('Uploading image, please wait...', 'info');
             const imageUrl = await uploadFile(file, '/api/upload_image');
-            setFormData({ ...formData, imageSrc: imageUrl }); // Replace File with URL after upload
+            setFormData({...formData, imageSrc: imageUrl}); // Replace File with URL after upload
             showAlert('Image uploaded successfully!', 'success');
         } catch (error) {
             console.error('Error uploading file:', error);
@@ -84,14 +84,14 @@ const AdminAnnouncementsPage = () => {
             }
 
             // Save the announcement record with the uploaded image URL
-            await saveRecord('announcements', { ...formData, imageSrc: imageUrl });
+            await saveRecord('announcements', {...formData, imageSrc: imageUrl});
 
             // Refresh announcements
             const data = await fetchAll('announcements');
             setAnnouncements(data);
 
             // Reset form after successful submission
-            setFormData({ id: '', title: '', description: '', imageSrc: '' });
+            setFormData({id: '', title: '', description: '', imageSrc: ''});
 
             showAlert('Announcement saved successfully!', 'success');
         } catch (error) {
@@ -114,7 +114,7 @@ const AdminAnnouncementsPage = () => {
             showAlert('Failed to delete announcement.', 'error');
         } finally {
             setLoading(false);
-            loadAnnouncements(); // Refresh announcements
+            loadAnnouncements();
         }
     };
 

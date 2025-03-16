@@ -76,7 +76,7 @@ const CollaborationsPage = () => {
             showAlert('Failed to save collaboration.', 'error');
         } finally {
             setLoading(false);
-            loadCollaborations(); // Refresh the page data
+            loadCollaborations();
         }
     };
 
