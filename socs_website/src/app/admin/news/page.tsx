@@ -11,6 +11,7 @@ interface NewsItem {
     title: string;
     description: string;
     imageSrc: string;
+    special: string;
 }
 
 const NewsPage = () => {
@@ -20,6 +21,7 @@ const NewsPage = () => {
         title: '',
         description: '',
         imageSrc: '',
+        special: 'no',
     });
     const [loading, setLoading] = useState(false);
 
@@ -94,7 +96,7 @@ const NewsPage = () => {
             setNewsItems(data);
 
             // Reset form after successful submission
-            setFormData({id: '', title: '', description: '', imageSrc: ''});
+            setFormData({id: '', title: '', description: '', imageSrc: '',special: 'no'});
 
             showAlert('News saved successfully!', 'success');
         } catch (error) {
@@ -151,6 +153,18 @@ const NewsPage = () => {
                         name: 'imageSrc',
                         type: 'file',
                         onChange: (e) => handleFileUpload(e.target.files),
+                        required: true,
+                    },
+                    {
+                        label: 'Special',
+                        name: 'special',
+                        type: 'select',
+                        options: [
+                            { label: 'No', value: 'no' },
+                            { label: 'Yes', value: 'yes' },
+                        ],
+                        value: formData.special,
+                        onChange: handleChange,
                         required: true,
                     },
                 ]}
