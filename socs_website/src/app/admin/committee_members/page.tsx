@@ -68,6 +68,7 @@ const AdminCommitteeMembersPage = () => {
             let imageUrl = formData.imageSrc; // Check if an image URL already exists
 
             // If imageSrc is a File (new file selected), upload it first
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             if (formData.imageSrc instanceof File) {
                 showAlert('Uploading image, please wait...', 'info');

@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Image from 'next/image';
 import { supabase } from '@/services/supabaseClient';
 import { Poppins } from "next/font/google";
 
