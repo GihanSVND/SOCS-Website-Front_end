@@ -112,7 +112,7 @@ export default function About() {
       
       <div className="container text-center  mx-auto px-10">
 
-      <h2 className={`${poppins5.className} text-4xl md:text-5xl py-7 font-semibold mb-4 text-white`}>ANNOUNCEMENT</h2>
+      <h2 className={`${poppins5.className} text-4xl md:text-5xl py-7 font-semibold mb-4 text-white`}>Our Journey</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           
