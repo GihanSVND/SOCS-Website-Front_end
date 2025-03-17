@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Image from 'next/image';
 import { supabase } from '@/services/supabaseClient';
 import { Poppins } from "next/font/google";
 
@@ -51,12 +50,10 @@ const CommitteeMemberGallery = () => {
                 {teamMembers.slice(0, 4).map((member, index) => (
                     <div key={index} className="text-center">
                         <div className="w-[200px] h-[200px] mx-auto mb-4 relative">
-                            <Image
+                            <img
                                 src={member.imageSrc}
                                 alt={member.name}
-                                layout="fill"
-                                objectFit="cover"
-                                className="rounded-full border-white"
+                                className="w-[200px] h-[200px] rounded-full border-white object-cover"
                             />
                         </div>
                         <h3 className="font-bold text-lg">{member.role}</h3>
@@ -70,12 +67,10 @@ const CommitteeMemberGallery = () => {
                 {teamMembers.slice(4, 7).map((member, index) => (
                     <div key={index} className="text-center">
                         <div className="w-[200px] h-[200px] mx-auto mb-4 relative">
-                            <Image
+                            <img
                                 src={member.imageSrc}
                                 alt={member.name}
-                                layout="fill"
-                                objectFit="cover"
-                                className="rounded-full border-white"
+                                className="w-[200px] h-[200px] rounded-full border-white object-cover"
                             />
                         </div>
                         <h3 className={`${poppins5.className} font-bold text-lg`}>{member.role}</h3>

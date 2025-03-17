@@ -11,15 +11,18 @@ interface NewsItem {
     title: string;
     description: string;
     imageSrc: string;
+    special: string;
 }
 
-const poppins3 = Poppins({ weight: "300", subsets: ["latin"] });
+const poppins3 = Poppins({weight: "300", subsets: ["latin"]});
 
 export default function News() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [showImage, setShowImage] = useState(true);
     const [fadeIn, setFadeIn] = useState(false);
     const [newsItems, setNewsItems] = useState<NewsItem[]>([]);
+    const [specialNews, setSpecialNews] = useState<NewsItem[]>([]);
+    const [regularNews, setRegularNews] = useState<NewsItem[]>([]);
 
     useEffect(() => {
         const fetchNews = async () => {
@@ -27,6 +30,12 @@ export default function News() {
                 const {data, error} = await supabase.from('news').select('*'); // Assuming table name is 'news'
 
                 if (error) throw error;
+
+                const special = data.filter((news: NewsItem) => news.special === "yes");
+                const regular = data.filter((news: NewsItem) => news.special !== "yes");
+
+                setSpecialNews(special);
+                setRegularNews(regular);
 
                 setNewsItems(data || []);
             } catch (error) {
@@ -38,14 +47,18 @@ export default function News() {
     }, []);
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentIndex((prevIndex) =>
-                newsItems.length ? (prevIndex + 1) % newsItems.length : 0
-            );
-        }, 3000);
+        if (specialNews.length > 1) {
+            const interval = setInterval(() => {
+                setCurrentIndex((prevIndex) =>
+                    (prevIndex + 1) % specialNews.length
+                );
+            }, 3000);
 
-        return () => clearInterval(interval);
-    }, [newsItems]);
+            return () => clearInterval(interval);
+        } else {
+            setCurrentIndex(0); // Reset index if there's only one item
+        }
+    }, [specialNews]);
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -97,10 +110,10 @@ export default function News() {
                             >
                                 <div
                                     className="w-full h-full relative overflow-hidden rounded-t-lg md:rounded-l-lg md:rounded-tr-none">
-                                    {newsItems.length > 0 && (
+                                    {specialNews.length > 0 && (
                                         <img
-                                            src={newsItems[currentIndex]?.imageSrc}
-                                            alt={newsItems[currentIndex]?.title}
+                                            src={specialNews[currentIndex]?.imageSrc}
+                                            alt={specialNews[currentIndex]?.title}
                                             className="w-full h-full object-cover"
                                         />
                                     )}
@@ -120,11 +133,17 @@ export default function News() {
                             >
                                 <div
                                     className="absolute inset-0 bg-gradient-to-t from-transparent to-black opacity-30 rounded-b-lg md:rounded-r-lg md:rounded-bl-none"></div>
-                                <span
-                                    className={`${poppins3.className} text-white text-[10px] sm:text-[12px] md:text-[14px] mx-10 my-10 font-semibold tracking-wide leading-relaxed drop-shadow-md z-10`}>
-                                    {newsItems[currentIndex]?.description}
-                                </span>
+
+                                {/* Special News Description */}
+                                {specialNews.length > 0 && (
+                                    <span
+                                        className={`${poppins3.className} text-white text-[10px] sm:text-[12px] md:text-[14px] mx-10 my-10 font-semibold tracking-wide leading-relaxed drop-shadow-md z-10`}
+                                    >
+            {specialNews[currentIndex]?.description}
+        </span>
+                                )}
                             </div>
+
                         </div>
                     </div>
 
@@ -144,7 +163,7 @@ export default function News() {
 
                     <div className="flex justify-center mt-24">
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-                            {newsItems.map((newsItem) => (
+                            {regularNews.map((newsItem) => (
                                 <div
                                     key={newsItem.id}
                                     className="w-full max-w-[360px] h-[470px] rounded-[17px] overflow-hidden bg-gray-800 relative"
@@ -173,6 +192,7 @@ export default function News() {
                             ))}
                         </div>
                     </div>
+
                 </div>
             </section>
             <Footer/>
