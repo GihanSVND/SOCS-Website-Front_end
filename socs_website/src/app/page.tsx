@@ -66,7 +66,7 @@ export default function Home() {
             Sabaragamuwa University of Sri Lanka
           </p>
           <p className={`${poppins4.className} mt-10 mx-auto max-w-5xl p-3 text-[12px] sm:text-[14px] md:text-[16px]`}>
-            The Society of Computer Sciences - S0CS at Sabaragamuwa University
+            The Society of Computer Sciences - SOCS at Sabaragamuwa University
             of Sri Lanka is a leading student organization within the university
             and the Faculty of Computing, dedicated to enhancing knowledge,
             experience, and engagement in the field of computer science. The
